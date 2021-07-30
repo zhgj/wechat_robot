@@ -1,0 +1,314 @@
+个人信息：
+client_id: 1, message_type: 11025, message:{
+    "account": "",
+    "avatar": "http://wx.qlogo.cn/mmhead/ver_1/D8xsETM4CrRvEdXtIBuMWDMEe2Yc2QjovGK5IIMXp6wiabSqxuyXLmM7I1mKqXiaUMRInQ9I1vuCP1mcCYtibCTCtWXnE4Sb6SFqiaSd81A38z0/132",
+    "nickname": "\u559c\u5b9d",
+    "phone": "16602150394",
+    "pid": 3400,
+    "unread_msg_count": 0,
+    "wx_user_dir": "d:\\Documents\\WeChat Files\\zhanggaojiong\\",
+    "wxid": "zhanggaojiong"
+}
+
+天顺1群：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "\u7fa4\u91cc\u804a\u5929\u8bb0\u5f55\u641c\u7d22\u4e00\u4e0b",
+    "msgid": "2604089139719175300",
+    "room_wxid": "6361490023@chatroom",
+    "timestamp": 1625902892,
+    "to_wxid": "6361490023@chatroom",
+    "wx_type": 1
+}
+
+天顺2群：
+[on_recv] client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "\u7fa4\u91cc\u6ca1\u6709\u4fee\u6539\u6635\u79f0\u7684\u4e1a\u4e3b\uff0c\u8bf7\u914d\u5408\u5c3d\u5feb\u4fee\u6539\u4e00\u4e0b\u7fa4\u6635\u79f0\uff01",
+    "msgid": "5610771886791810313",
+    "room_wxid": "17948514722@chatroom",
+    "timestamp": 1625903224,
+    "to_wxid": "17948514722@chatroom",
+    "wx_type": 1
+}
+
+422：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "test",
+    "msgid": "390463529104367516",
+    "room_wxid": "877427608@chatroom",
+    "timestamp": 1625910835,
+    "to_wxid": "877427608@chatroom",
+    "wx_type": 1
+}
+
+6人组：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 0,
+    "msg": "test",
+    "msgid": "2642329908675932851",
+    "room_wxid": "7131372198@chatroom",
+    "timestamp": 1625910995,
+    "to_wxid": "7131372198@chatroom",
+    "wx_type": 1
+}
+
+房产2群：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "\u4e0d\u6e05\u695a",
+    "msgid": "8945377067584970155",
+    "room_wxid": "5104481030@chatroom",
+    "timestamp": 1625918292,
+    "to_wxid": "5104481030@chatroom",
+    "wx_type": 1
+}
+
+房产1群：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "[\u592a\u9633]",
+    "msgid": "5201431831815764621",
+    "room_wxid": "5134159600@chatroom",
+    "timestamp": 1625918775,
+    "to_wxid": "5134159600@chatroom",
+    "wx_type": 1
+}
+
+三高大家庭：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "wxid_0ucx29yq87z321",
+    "is_pc": 0,
+    "msg": "\u6ed1\u94f2",
+    "msgid": "4290509861495009394",
+    "room_wxid": "2654691168@chatroom",
+    "timestamp": 1625918781,
+    "to_wxid": "2654691168@chatroom",
+    "wx_type": 1
+}
+
+小小：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "wxid_hzwhlf2n3om121",
+    "is_pc": 0,
+    "msg": "\u9ad8\u9ad8",
+    "msgid": "8315175719633401431",
+    "room_wxid": "",
+    "timestamp": 1625971670,
+    "to_wxid": "zhanggaojiong",
+    "wx_type": 1
+}
+
+喜宝：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "\u55ef",
+    "msgid": "3066852835059003217",
+    "room_wxid": "",
+    "timestamp": 1625971774,
+    "to_wxid": "wxid_hzwhlf2n3om121",
+    "wx_type": 1
+}
+
+群图片消息：
+client_id: 1, message_type: 11047, message:{
+    "from_wxid": "xiaozhanzhuman",
+    "image": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Image\\2021-07\\fee966258ba4510916141bba2b34df0d.dat",       
+    "image_thumb": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Image\\Thumb\\2021-07\\4059087ced618f3d15917399162bd3eb_t.dat",
+    "is_pc": 0,
+    "msgid": "7177774294875967233",
+    "raw_msg": "<?xml version=\"1.0\"?>\n<msg>\n\t<img aeskey=\"81c2f6c4652bfe91379ce0f757ac4319\" encryver=\"1\" cdnthumbaeskey=\"81c2f6c4652bfe91379ce0f757ac4319\" cdnthumburl=\"307d0201000471306f02010002048a4246ad02032df53e02049a21067b020460ea55e4044a617570696d675f323064346666383165306137643134395f313632353937303134383835365f32336663336366622d383463332d346137642d613364332d636366656662316136646563020401050a020201000405004c52ae00\" cdnthumblength=\"3526\" cdnthumbheight=\"120\" cdnthumbwidth=\"90\" cdnmidheight=\"0\" cdnmidwidth=\"0\" cdnhdheight=\"0\" cdnhdwidth=\"0\" cdnmidimgurl=\"307d0201000471306f02010002048a4246ad02032df53e02049a21067b020460ea55e4044a617570696d675f323064346666383165306137643134395f313632353937303134383835365f32336663336366622d383463332d346137642d613364332d636366656662316136646563020401050a020201000405004c52ae00\" length=\"42601\" md5=\"b95888667c7444ee52a884892f340cb7\" hevc_mid_size=\"42601\" />\n</msg>\n",
+    "room_wxid": "5104481030@chatroom",
+    "timestamp": 1625971833,
+    "to_wxid": "5104481030@chatroom",
+    "wx_type": 3,
+    "xor_key": 216
+}
+
+消息撤回：
+{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 0,
+    "msgid": "3514366986062556723",
+    "raw_msg": "<sysmsg type=\"revokemsg\"><revokemsg><session>17979338094@chatroom</session><msgid>1127161201</msgid><newmsgid>5050440165992921862</newmsgid><replacemsg><![CDATA[\u4f60\u64a4\u56de\u4e86\u4e00\u6761\u6d88\u606f]]></replacemsg></revokemsg></sysmsg>",
+    "room_wxid": "17979338094@chatroom",
+    "timestamp": 1625756884,
+    "to_wxid": "17979338094@chatroom",
+    "wx_type": 10002
+}
+
+小程序消息:
+client_id: 1, message_type: 11056, message:{
+    "from_wxid": "wxid_2fqsaq8lrn0a21",
+    "is_pc": 0,
+    "msgid": "7994799018177741967",
+    "raw_msg": "<?xml version=\"1.0\"?>\n<msg>\n\t<appmsg appid=\"\" sdkver=\"0\">\n\t\t<title>\u5bf9\u4e09\u4f60\u90fd\u8981\u4e0d\u8d77\uff1f\u5feb\u70bndtype>\n\t\t<mediatagname />\n\t\t<messageext />\n\t\t<messageaction />\n\t\t<content />\n\t\t<contentattr>0</contentattr>\n\t\t<url>https://mp.weixin.qql />\n\t\t<lowdataurl />\n\t\t<songalbumurl />\n\t\t<songlyric />\n\t\t<appattach>\n\t\t\t<totallen>0</totallen>\n\t\t\t<attachid />\n\t\t\t<emoticonmd5 /f61645f31383734363430343938304063686174726f6f6d3833305f313632353939323538315f38653766306231312d346663322d343939392d386231392d35653234346630396333643402040gth>38719</cdnthumblength>\n\t\t\t<cdnthumbwidth>420</cdnthumbwidth>\n\t\t\t<cdnthumbheight>336</cdnthumbheight>\n\t\t\t<cdnthumbaeskey>651dbf68b5d1ca34a3ilekey>6361490023@chatroom508_1626010601</filekey>\n\t\t</appattach>\n\t\t<extinfo />\n\t\t<sourceusername>gh_7f4d6bf980d5@app</sourceusername>\n\t\t<sourshare>0</directshare>\n\t\t<recorditem><![CDATA[<recordinfo><edittime>0</edittime><fromscene>0</fromscene></recordinfo>]]></recorditem>\n\t\t<weappinfo>\ntype>\n\t\t\t<version>239</version>\n\t\t\t<weappiconurl><![CDATA[http://mmbiz.qpic.cn/mmbiz_png/Fp1A154zD4e29gdz8pKIMCXtVyxy1SRib6P5Jrm49nNO9cJVB94tsoJd7e=PresentBean&InvitePlatform=WeChat&InteractMode=1&ShareTime=1626010595480&Sharer=1679061475&ShareImgID=379&timestamp=1626010595&photo_id=346&user_tag=A2&BvxnsEVHzFcMisadhYC8u0G8xICEymbpFrujvAHIE%3D&shareNickName=H%EF%BC%81&presentBeanCount=2&needShareToGroupAndSelfClickGetReward=true&sharePrizeBeanNum=1500NB+livUSD/zP5aA9KPT5n6yPdll+m0p77QDLg==&srcAppId=wxd0e404d795ea6f80&sourceClickPosition=share]]></pagepath>\n\t\t\t<shareId><![CDATA[0_wxd0e404d795ea6f80_3LTYT3650SJpwULVpbRHLXtdUxAX1vZVmw335Gfdcsy4ee7Zdp8tMeRUTffLkC7w~]]></sharekey>\n\t\t\t<sharename><![CDATA[6361490023@chatroom]]></sharename>\n\t\t\t<appsag>\n\t\t\t<subType>0</subType>\n\t\t\t<messageextradata><![CDATA[{\"userInfo\":{\"openID\":\"oLIwA0cwAyphSPJDOKbpEAnFXyXc\",\"errMsg\":\"getIAPInfo:ok\",tamp\":1626010584304,\"beginCGITimestamp\":1626010584199,\"queueLength\":0,\"beginCGITimestampAfterConfirm\":18446744073709552000,\"wxdataDequeueTimestamp"{\\\"openID\\\":\\\"oLIwA0cwAyphSPJDOKbpEAnFXyXc\\\", \\\"appId\\\":\\\"wxd0e404d795ea6f80\\\"}\"},\"shareType\":2,\"shareCardMarker\":{\"label\":7}}]]><a5c9d55ec59b18749033.png]]></weapppagethumbrawurl>\n\t\t</weappinfo>\n\t</appmsg>\n\t<fromusername>wxid_2fqsaq8lrn0a21</fromusername>\n\t<scene>0</scene>\
+    "room_wxid": "6361490023@chatroom",
+    "timestamp": 1626010601,
+    "to_wxid": "6361490023@chatroom",
+    "wx_sub_type": 33,
+    "wx_type": 49
+}
+
+转发拼多多链接：
+client_id: 1, message_type: 11054, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msgid": "4707500628871193334",
+    "raw_msg": "<msg>\n    <fromusername>zhanggaojiong</fromusername>\n    <scene>0</scene>\n    <commenturl></commenturl>\n    <appmsg appid=\"wx77d53b84434b9d9a\" sdkver=\"0\">\n        <title>\u3010\u76f4\u64ad\u4e2d\u3011\u3010\u4ec5\u52691\u4e2a\u540d\u989d\u3011\u62115.8\u5143\u62fc\u4e86\u6b63\u65b9\u4f53\u79ef\u6728\u6570\u5b66\u6559\u5177\u5c0f\u5b66\u6728\u5236\u5c0f\u65b9\u5757\u62fc\u642d\u7acb\u4f53\u51e0\u4f55\u6a21\u578b\u513f\u7ae5\u76ca\u667a\u73a9\u5177\uff0c\u5927\u5bb6\u5feb\u6765\u62fc\u591a\u591a\u5427\uff01 \u62fc\u591a\u591a</title>\n 
+       <des>\u6211\u4e70\u4e86\u201c\u5f69\u82722\u5398\u7c7330\u7c92...\u201d\u89c4\u683c\uff0c\u6b63\u65b9\u4f53\u79ef\u6728\u6570\u5b66\u6559\u5177\u5c0f\u5b66\u6728\u5236\u5c0f\u65b9\u5757\u62fc\u642d\u7acb\u4f53\u51e0\u4f55\u6a21\u578b\u513f\u7ae5\u76ca\u667a\u73a9\u5177</des>\n        <action>view</action>\n        <type>5</type>\n        <showtype>0</showtype>\n        <content></content>\n        <url>https://mobile.yangkeduo.com/group226.html?_wv=41729&amp;_wvx=10&amp;group_order_id=1547459234355920847&amp;uin=VKU6KD2XQRUKHKLNHPUX2Q7J3Q_GEXDA&amp;goods_id=232858183063&amp;_ex_sharefrd_click=1&amp;_x_query=%E7%AB%8B%E6%96%B9%E4%BD%93%E5%8E%9F%E6%9C%A8%E7%A7%AF%E6%9C%A8&amp;refer_share_id=lsvqzrjof1qiu1bfrbxa2lwxip3co4jw&amp;refer_share_uid=4225741652815&amp;refer_share_uin=VKU6KD2XQRUKHKLNHPUX2Q7J3Q_GEXDA&amp;refer_share_channel=message</url>\n        <dataurl></dataurl>\n        <lowurl></lowurl>\n        <lowdataurl></lowdataurl>\n        <recorditem>\n            <![CDATA[]]>\n        </recorditem>\n        <thumburl></thumburl>\n        <messageaction></messageaction>\n        <extinfo></extinfo>\n   
+     <sourceusername></sourceusername>\n        <sourcedisplayname></sourcedisplayname>\n        <commenturl></commenturl>\n        <appattach>\n            <totallen>0</totallen>\n            <attachid></attachid>\n
+  <emoticonmd5></emoticonmd5>\n            <fileext></fileext>\n            <aeskey></aeskey>\n        </appattach>\n        <weappinfo>\n            <pagepath></pagepath>\n            <username></username>\n            <appid></appid>\n            <appservicetype>0</appservicetype>\n        </weappinfo>\n        <websearch />\n    </appmsg>\n    <appinfo>\n        <version>1</version>\n        <appname>Window wechat</appname>\n    </appinfo>\n</msg>\n",
+    "room_wxid": "",
+    "timestamp": 1626043998,
+    "to_wxid": "filehelper",
+    "wx_sub_type": 5,
+    "wx_type": 49
+}
+
+936房产：
+client_id: 1, message_type: 11046, message:{  
+    "at_user_list": [],
+    "from_wxid": "wxid_j3z69ezr6fj422",
+    "is_pc": 0,
+    "msg": "\u516c\u56ed\u8def\u90a3\u4e2a\uff0c\u5728\u4e0d\u8865\uff0c\u771f\u4e0d\u80fd\u8d70\u4e86\uff0c\u5929\u5929\u5835",
+    "msgid": "7851180680524771058",
+    "room_wxid": "24399591896@chatroom",
+    "timestamp": 1626061423,
+    "to_wxid": "24399591896@chatroom",
+    "wx_type": 1
+}
+
+群员@我：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [
+        "zhanggaojiong"
+    ],
+    "from_wxid": "wxid_hzwhlf2n3om121",
+    "is_pc": 0,
+    "msg": "@10#1\u2005\u7fa4\u4e3b\uff1f",
+    "msgid": "7696399331583734081",
+    "room_wxid": "17948514722@chatroom",
+    "timestamp": 1626068023,
+    "to_wxid": "17948514722@chatroom",
+    "wx_type": 1
+}
+
+我@群员：
+client_id: 1, message_type: 11046, message:{
+    "at_user_list": [
+        "wxid_hzwhlf2n3om121"
+    ],
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msg": "@\u5c0f\u5c0f \uff1f",
+    "msgid": "1306907759570146214",
+    "room_wxid": "17948514722@chatroom",
+    "timestamp": 1626070048,
+    "to_wxid": "17948514722@chatroom",
+    "wx_type": 1
+}
+
+test1:
+client_id: 1, message_type: 11051, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msgid": "8744618151105331247",
+    "raw_msg": "<msg><videomsg clientmsgid=\"57e641d0fcffa9c48cc32fb894f468fc\" aeskey=\"9cf34e2e9ce2bf9dc704ccdccc223d7d\" cdnvideourl=\"3079020100046d306b0201000204cb4cb98e02032f565d020419c9a3b4020460ec4d4304466139376437613766313832626131356633623663653061366662383036616239325f32346363626539362d666363662d346266322d386532662d6136626139616138366239650204010400040201000405004c54a100\" cdnthumburl=\"3079020100046d306b0201000204cb4cb98e02032f565d020419c9a3b4020460ec4d4304466139376437613766313832626131356633623663653061366662383036616239325f32346363626539362d666363662d346266322d386532662d6136626139616138366239650204010400040201000405004c54a100\"                          playlength=\"15\" length=\"954570\" type=\"0\"  cdnthumblength = \"3181\" cdnthumbheight = \"0\" cdnthumbwidth = \"0\" cdnthumbaeskey=\"9cf34e2e9ce2bf9dc704ccdccc223d7d\" md5=\"24b9b6e3a70b96872cc099fc8124c3c6\" newmd5=\"\" /><streamvideo><streamvideourl></streamvideourl><streamvideototaltime>0</streamvideototaltime><streamvideotitle></streamvideotitle><streamvideowording></streamvideowording><streamvideoweburl></streamvideoweburl><streamvideothumburl></streamvideothumburl><streamvideopublishid></streamvideopublishid><streamvideoaduxinfo></streamvideoaduxinfo></streamvideo><statextstr></statextstr></msg>",
+    "room_wxid": "19005034370@chatroom",
+    "timestamp": 1626099004,
+    "to_wxid": "19005034370@chatroom",
+    "video": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Video\\2021-07\\b77222d195a4b8d55755a34b714f38be.mp4",
+    "video_thumb": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Video\\2021-07\\b77222d195a4b8d55755a34b714f38be.jpg",
+    "wx_type": 43
+}
+
+test2：
+client_id: 1, message_type: 11051, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 1,
+    "msgid": "4062184258383595130",
+    "raw_msg": "<msg><videomsg clientmsgid=\"543037087f6501f80b6d9c6d7a6e0ad7\" aeskey=\"592aed99dfae5501bbd67c987bf0ad8a\" cdnvideourl=\"3079020100046d306b0201000204cb4cb98e02032f565d020419c9a3b4020460ec4db304463566373734623332386432643830656130373134323439633663393136373263325f35323839356136302d336337652d346166372d396537662d6534353264313165343036650204010400040201000405004c54a100\" cdnthumburl=\"3079020100046d306b0201000204cb4cb98e02032f565d020419c9a3b4020460ec4db304463566373734623332386432643830656130373134323439633663393136373263325f35323839356136302d336337652d346166372d396537662d6534353264313165343036650204010400040201000405004c54a100\"                          playlength=\"15\" length=\"954570\" type=\"0\"  cdnthumblength = \"3161\" cdnthumbheight = \"0\" cdnthumbwidth = \"0\" cdnthumbaeskey=\"592aed99dfae5501bbd67c987bf0ad8a\" md5=\"24b9b6e3a70b96872cc099fc8124c3c6\" newmd5=\"\" /><streamvideo><streamvideourl></streamvideourl><streamvideototaltime>0</streamvideototaltime><streamvideotitle></streamvideotitle><streamvideowording></streamvideowording><streamvideoweburl></streamvideoweburl><streamvideothumburl></streamvideothumburl><streamvideopublishid></streamvideopublishid><streamvideoaduxinfo></streamvideoaduxinfo></streamvideo><statextstr></statextstr></msg>",
+    "room_wxid": "21116388962@chatroom",
+    "timestamp": 1626099123,
+    "to_wxid": "21116388962@chatroom",
+    "video": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Video\\2021-07\\24b9b6e3a70b96872cc099fc8124c3c6.mp4",
+    "video_thumb": "C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Video\\2021-07\\24b9b6e3a70b96872cc099fc8124c3c6.jpg",
+    "wx_type": 43
+}
+
+保存的gif：
+[on_recv] client_id: 1, message_type: 11052, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 0,
+    "msgid": "118157629851842668",
+    "raw_msg": "<msg><emoji fromusername = \"zhanggaojiong\" tousername = \"19005034370@chatroom\" type=\"2\" idbuffer=\"media:0_0\" md5=\"625381a2d0f75a79cc77a446d18568de\" len = \"95849\" productid=\"\" androidmd5=\"625381a2d0f75a79cc77a446d18568de\" androidlen=\"95849\" s60v3md5 = \"625381a2d0f75a79cc77a446d18568de\" s60v3len=\"95849\" s60v5md5 = \"625381a2d0f75a79cc77a446d18568de\" s60v5len=\"95849\" cdnurl = \"http://emoji.qpic.cn/wx_emoji/8xdicpwlE36hDfmr8vPBHcQIt5yzUUDwxyPwgVrXDaIBWB7g43ic4I1g/\" designerid = \"\" thumburl = \"\" encrypturl = \"http://emoji.qpic.cn/wx_emoji/krKyTXMV6JBKYiaNpt0wxb4vXPWPRvj6c2xjsE3y7JBdxB7LLcMGGkw/\" aeskey= \"709a8a918cb97db2b333222091e6bca3\" externurl = \"http://emoji.qpic.cn/wx_emoji/s4S6IRrq2FictH6Q6XNyzFiaEDGicJLgeRxMBqFWWxSLmd8LKCibWlFJVLaJRiacmFINC/\" externmd5 = \"ad7eb0c58c1f9a022cbc540f7783aa0b\" width= \"400\" height= \"400\" tpurl= \"\" tpauthkey= \"\" attachedtext= \"\" attachedtextcolor= \"\" lensid= \"\" emojiattr= \"\" linkid= \"\" ></emoji> </msg>",
+    "room_wxid": "19005034370@chatroom",
+    "timestamp": 1626245126,
+    "to_wxid": "19005034370@chatroom",
+    "wx_type": 47
+}
+猜拳gif：
+[on_recv] client_id: 1, message_type: 11052, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 0,
+    "msgid": "2800886528095555775",
+    "raw_msg": "<msg><emoji fromusername = \"zhanggaojiong\" tousername = \"19005034370@chatroom\" type=\"1\" idbuffer=\"media:0_0\" md5=\"f790e342a02e0f99d34b316547f9aeab\" len = \"9253\" productid=\"\" androidmd5=\"f790e342a02e0f99d34b316547f9aeab\" androidlen=\"9253\" s60v3md5 = \"f790e342a02e0f99d34b316547f9aeab\" s60v3len=\"9253\" s60v5md5 = \"f790e342a02e0f99d34b316547f9aeab\" s60v5len=\"9253\" cdnurl = \"http://emoji.qpic.cn/wx_emoji/ARQOAfC52Cu6iczyCvLhibUNQxCialTeaeObDoEMsL7uJjyV5dqzCNCFQ/\" designerid = \"\" thumburl = \"\" encrypturl = \"http://emoji.qpic.cn/wx_emoji/icPQU1Zz8ylrObW2YFmvUnPKTAJHUoicLibriclk4xyYk0qaUeSYJqQvZA/\" aeskey= \"ad6ca17371af52e53bc50201415422f9\" externurl = \"http://emoji.qpic.cn/wx_emoji/wmwtRnLc18S1WI3lcaI1AhBLmRXVJPiaKObsdiaDHmibkKjuQz1NhzNSu6tPlXic5tsc/\" externmd5 = \"6d4f50ffa39402e87c4a09e94a3cc68a\" width= \"88\" height= \"88\" tpurl= \"\" tpauthkey= \"\" attachedtext= \"\" attachedtextcolor= \"\" lensid= \"\" emojiattr= \"\" linkid= \"\" ></emoji> <gameext type=\"1\" content=\"2\" ></gameext></msg>",
+    "room_wxid": "19005034370@chatroom",
+    "timestamp": 1626245131,
+    "to_wxid": "19005034370@chatroom",
+    "wx_type": 47
+}
+骰子gif：
+[on_recv] client_id: 1, message_type: 11052, message:{
+    "from_wxid": "zhanggaojiong",
+    "is_pc": 0,
+    "msgid": "8528473385450913369",
+    "raw_msg": "<msg><emoji fromusername = \"zhanggaojiong\" tousername = \"19005034370@chatroom\" type=\"1\" idbuffer=\"media:0_0\" md5=\"9e3f303561566dc9342a3ea41e6552a6\" len = \"8178\" productid=\"\" androidmd5=\"9e3f303561566dc9342a3ea41e6552a6\" androidlen=\"8178\" s60v3md5 = \"9e3f303561566dc9342a3ea41e6552a6\" s60v3len=\"8178\" s60v5md5 = \"9e3f303561566dc9342a3ea41e6552a6\" s60v5len=\"8178\" cdnurl = \"http://emoji.qpic.cn/wx_emoji/YbCHM38dRYCIWbKmiaBrdnPrfuuwicLD2iacSWaPoAiaFrUySG87ELibOXQ/\" designerid = \"\" thumburl = \"\" encrypturl = \"http://emoji.qpic.cn/wx_emoji/dMN390LNvrbqpWm22PNiagDuXENN5V1F633mfwXXSic5yHmq1ibBn3b1Q/\" aeskey= \"b8e0b4f14c83e60f41f72baac6d13091\" externurl = \"http://emoji.qpic.cn/wx_emoji/GUP6ibFCwTZbhpBLkbanBJh6OkjiapCL2hkXw4MKSKTuPwGf3mT3DicDvYicczYTfibsj/\" externmd5 = \"5ce491fed083095e5e5f2eee88509773\" width= \"100\" height= \"100\" tpurl= \"\" tpauthkey= \"\" attachedtext= \"\" attachedtextcolor= \"\" lensid= \"\" emojiattr= \"\" linkid= \"\" ></emoji> <gameext type=\"2\" content=\"5\" ></gameext></msg>",
+    "room_wxid": "19005034370@chatroom",
+    "timestamp": 1626245134,
+    "to_wxid": "19005034370@chatroom",
+    "wx_type": 47
+}
+
+语音消息：
+client_id: 1, message_type: 11048, message:{
+    "from_wxid": "wxid_xstbpxy6ip2s22",
+    "is_pc": 0,
+    "msgid": "7609501903626894934",
+    "raw_msg": "<msg><voicemsg endflag=\"1\" length=\"15592\" voicelength=\"8866\" clientmsgid=\"413461386630303834373438613562004416200715214d45a969fa7104\" fromusername=\"wxid_xstbpxy6ip2s22\" downcount=\"0\" cancelflag=\"0\" voiceformat=\"4\" forwardflag=\"0\" bufid=\"1156407635455902315\" /></msg>",
+    "room_wxid": "",
+    "silk_file": "C:\\Users\\zhanggaojiong\\AppData\\Local\\Temp\\wxs50CB.tmp",
+    "timestamp": 1626337254,
+    "to_wxid": "zhanggaojiong",
+    "wx_type": 34
+}
+
+名片消息：
+[on_recv] client_id: 1, message_type: 11050, message:{
+    "from_wxid": "wxid_hzwhlf2n3om121",
+    "is_pc": 0,
+    "msgid": "9013276136342577061",
+    "raw_msg": "<?xml version=\"1.0\"?>\n<msg bigheadimgurl=\"http://wx.qlogo.cn/mmhead/ver_1/GSPwGx1O8OI65yicn683ByhtzwficLGdGcQgAAEA4YnRdjhzGSpl62Fuiaf7UQCJCupdVKZiakhRdVIiaINYTHCdAI8XOlNzu9hI1oXYdxLy6N6E/0\" smallheadimgurl=\"http://wx.qlogo.cn/mmhead/ver_1/GSPwGx1O8OI65yicn683ByhtzwficLGdGcQgAAEA4YnRdjhzGSpl62Fuiaf7UQCJCupdVKZiakhRdVIiaINYTHCdAI8XOlNzu9hI1oXYdxLy6N6E/132\" username=\"v3_020b3826fd030100000000000c6b0f0463237c000000501ea9a3dba12f95f6b60a0536a1adb681a8bdc65cb00745cc9e68298aef4f756537581dad40c79e3123c59d289b10f9c1a38c5508e839741cae5b6e48722cfd520ecbfcbe8900caed9d08799c@stranger\" nickname=\"\u7c73\u590f\" fullpy=\"\u7c73\u590f\" shortpy=\"MX\" alias=\"\" imagestatus=\"3\" scene=\"17\" province=\"\u76f4\u5e03\u7f57\u9640\" city=\"\" sign=\"\" sex=\"2\" certflag=\"0\" certinfo=\"\" brandIconUrl=\"\" brandHomeUrl=\"\" brandSubscriptConfigUrl=\"\" brandFlags=\"0\" regionCode=\"GI\" antispamticket=\"v4_000b708f0b0400000100000000002809f133ff6c73d70d230a2bf1601000000050ded0b020927e3c97896a09d47e6e9e9652396d245ab74bef165037f18a94d8ea38f61e9c0ed83d19adb375ad4675f3514b91f73b3fe1693848bb1d29982b3355e442658d7f7f6cf2735647e878f704a097ff72fc2e80ade599dd62f39c061492241078cbb39263d4ee333e079a7847d0d1bc49ebc01a9f060783f0a707de8c1e444b749ddeac3c63521e472ffd7975f51978dc440928fb86cac6fb04ba15a87890e47513194b054eb6a6f0318c8c419856498a393ca96273933c65b50d3fcb37151de08cc79e56af337425a27132bd89f05119a3d90e380a19909a3497bf0091665dfa80cd66d2fec30b8d7a01f0d223807dc7efebfd09c8@stranger\" />\n",
+    "room_wxid": "19005034370@chatroom",
+    "timestamp": 1626417929,
+    "to_wxid": "19005034370@chatroom",
+    "wx_type": 42
+}

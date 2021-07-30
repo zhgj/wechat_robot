@@ -1,0 +1,74 @@
+resquest:
+{
+	"reqType":0,
+    "perception": {
+        "inputText": {
+            "text": "你好"
+        },
+        "inputImage": {
+            "url": ""
+        },
+        "inputMedia":{
+            "url":""
+        },
+        "selfInfo": {
+            "location": {
+                "city": "",
+                "province": "",
+                "street": ""
+            }
+        }
+    },
+    "userInfo": {
+        "apiKey": "1711cee3bc1447b09969f0aa7a5fd14c",
+        "userId": "299078"
+    }
+}
+
+normal response:
+{
+    "emotion": {
+        "robotEmotion": {
+            "a": 0,
+            "d": 0,
+            "emotionId": 0,
+            "p": 0
+        },
+        "userEmotion": {
+            "a": 0,
+            "d": 0,
+            "emotionId": 10300,
+            "p": 0
+        }
+    },
+    "intent": {
+        "actionName": "",
+        "code": 10004,
+        "intentName": ""
+    },
+    "results": [
+        {
+            "groupType": 1,
+            "resultType": "text",
+            "values": {
+                "text": "你也好～"
+            }
+        }
+    ]
+}
+
+error response:
+{
+    "intent": {
+        "code": 4400
+    },
+    "results": [
+        {
+            "groupType": 0,
+            "resultType": "text",
+            "values": {
+                "text": "没有上传userId!"
+            }
+        }
+    ]
+}

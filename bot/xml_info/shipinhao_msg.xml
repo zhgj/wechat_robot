@@ -1,0 +1,158 @@
+<?xml version=\"1.0\"?>
+<msg>
+    <appmsg appid=\"\" sdkver=\"0\">
+        <title>\u5f53\u524d\u5fae\u4fe1\u7248\u672c\u4e0d\u652f\u6301\u5c55\u793a\u8be5\u5185\u5bb9\uff0c\u8bf7\u5347\u7ea7\u81f3\u6700\u65b0\u7248\u672c\u3002</title>
+        <des />
+        <username />
+        <action>view</action>
+        <type>51</type>
+        <showtype>0</showtype>
+        <content />
+        <url>https://support.weixin.qq.com/security/readtemplate?t=w_security_center_website/upgrade</url>
+        <lowurl />
+        <forwardflag>0</forwardflag>
+        <dataurl />
+        <lowdataurl />
+        <contentattr>0</contentattr>
+        <streamvideo>
+            <streamvideourl />
+            <streamvideototaltime>0</streamvideototaltime>
+            <streamvideotitle />
+            <streamvideowording />
+            <streamvideoweburl />
+            <streamvideothumburl />
+            <streamvideoaduxinfo />
+            <streamvideopublishid />
+        </streamvideo>
+        <canvasPageItem>
+            <canvasPageXml><![CDATA[]]></canvasPageXml>
+        </canvasPageItem>
+        <appattach>
+            <totallen>0</totallen>
+            <attachid />
+            <cdnattachurl />
+            <emoticonmd5 />
+            <aeskey />
+            <fileext />
+            <islargefilemsg>0</islargefilemsg>
+        </appattach>
+        <extinfo />
+        <androidsource>0</androidsource>
+        <thumburl />
+        <mediatagname />
+        <messageaction><![CDATA[]]></messageaction>
+        <messageext><![CDATA[]]></messageext>
+        <emoticongift>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticongift>
+        <emoticonshared>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticonshared>
+        <designershared>
+            <designeruin>0</designeruin>
+            <designername>null</designername>
+            <designerrediretcturl>null</designerrediretcturl>
+        </designershared>
+        <emotionpageshared>
+            <tid>0</tid>
+            <title>null</title>
+            <desc>null</desc>
+            <iconUrl>null</iconUrl>
+            <secondUrl>null</secondUrl>
+            <pageType>0</pageType>
+        </emotionpageshared>
+        <webviewshared>
+            <shareUrlOriginal />
+            <shareUrlOpen />
+            <jsAppId />
+            <publisherId />
+        </webviewshared>
+        <template_id />
+        <md5 />
+        <weappinfo>
+            <username />
+            <appid />
+            <appservicetype>0</appservicetype>
+            <secflagforsinglepagemode>0</secflagforsinglepagemode>
+            <videopageinfo>
+                <thumbwidth>0</thumbwidth>
+                <thumbheight>0</thumbheight>
+                <fromopensdk>0</fromopensdk>
+            </videopageinfo>
+        </weappinfo>
+        <statextstr />
+        <musicShareItem>
+            <musicDuration>0</musicDuration>
+        </musicShareItem>
+        <finderFeed>
+            <objectId>13626785778503063620</objectId>
+            <objectNonceId>814975960724467271_8_18_9</objectNonceId>
+            <feedType>4</feedType>
+            <nickname>\u81f3\u7b80\u8bbe\u8ba1\u5c0f\u5317</nickname>
+            <username>v2_060000231003b20faec8c7e4891bc6d2cb05e431b077678900aee562d8444382366d116a6c78@finder</username>
+            <avatar><![CDATA[http://wx.qlogo.cn/finderhead/3a3QxMHZ8YwUl2icEkbjHrz5RY7kKmJWI8qSXouQicvT4ROtIE7FdaKw/0]]></avatar>
+            <desc>#\u88c5\u4fee 10\u5e74\u524d\u540e\u5367\u5ba4\u5fc5\u770b\u76846\u70b9\u53d8\u5316\uff0c\u7236\u6bcd\u770b\u4e86\u90fd\u8bf4\u597d</desc>
+            <mediaCount>1</mediaCount>
+            <localId>0</localId>
+            <mediaList>
+                <media>
+                    <mediaType>4</mediaType>
+                    <url><![CDATA[http://wxapp.tc.qq.com/251/20302/stodownload?encfilekey=Cvvj5Ix3eezXKmVNfShJRUicJJMYPEroic4L0paJjibKRIRlj8mPpCk7Ov29tkiahMSxX1ZyPicurk681XdeJ3nfGF7NjR4CIp837nswWJAgJG6l25voo52nTN5Rus5KXynPErAP49vKz6XQZnrr3myEOFchUstUiajmQUSibMTDkib5LuaWAA6t6kG5CrdibBUaxtBIr&adaptivelytrans=0&bizid=1023&dotrans=930&hy=SZ&idx=1&m=1297d61b1db2a4eaa2fe8ca0cff19771&token=x5Y29zUxcibD0FiaaIbpV2k5F5cK6wYrpelibib0QWsgYJbwkcwMzuMuImSG9Aib9dKRAK66nYCSBuko]]></url>
+                    <thumbUrl><![CDATA[http://wxapp.tc.qq.com/251/20304/stodownload?m=4963e4cb2f2eacacb09d9da38a39223e&filekey=30460201010421301f020200fb0402535a04104963e4cb2f2eacacb09d9da38a39223e020300afa2041e000000046274667300000001310000000861707073746f72650000000131&hy=SZ&storeid=32303231303632333137313034343030306336303665656666616134323261663539356630393030303030306662&dotrans=0&bizid=1023&adaptivelytrans=0]]></thumbUrl>
+                    <fullCoverUrl><![CDATA[http://wxapp.tc.qq.com/251/20304/stodownload?encfilekey=XGocBFxVWK5dcyOOqpEU4yZ0ia4qlCRBBMMgm4iax82Yw44e3yfymFyqTSooCklGGIX9a9CpkqpUSxRxcDcy3Wl7cZfMM87U1ggjP6gM0XYic0LiaQxqrWUbVgyO0wsRsAJ6GnkUrPY52dEHph7lzqib26sD0Bpz1Tmbrqic7FUNnkGONrcS9l3PT9Kw&adaptivelytrans=0&bizid=1023&dotrans=0&hy=SZ&idx=1&m=e04e3a69f173004f98bbbaa25313d409&token=x5Y29zUxcibA8OUawCN97Xia4Td4z9icZ105eroWhwSvhWYE1ibqkswl1T9BPZ2XsJJr]]></fullCoverUrl>
+                    <fullClipInset />
+                    <width>896.0</width>
+                    <height>1920.0</height>
+                    <videoPlayDuration>34</videoPlayDuration>
+                </media>
+            </mediaList>
+            <megaVideo>
+                <objectId>0</objectId>
+                <objectNonceId />
+            </megaVideo>
+        </finderFeed>
+        <findernamecard>
+            <username />
+            <avatar><![CDATA[]]></avatar>
+            <nickname />
+            <auth_job />
+            <auth_icon>0</auth_icon>
+            <auth_icon_url />
+        </findernamecard>
+        <finderGuarantee>
+            <scene><![CDATA[0]]></scene>
+        </finderGuarantee>
+        <directshare>0</directshare>
+        <gamecenter>
+            <namecard>
+                <iconUrl />
+                <name />
+                <desc />
+                <tail />
+                <jumpUrl />
+            </namecard>
+        </gamecenter>
+        <patMsg>
+            <chatUser />
+            <records>
+                <recordNum>0</recordNum>
+            </records>
+        </patMsg>
+        <secretmsg>
+            <issecretmsg>0</issecretmsg>
+        </secretmsg>
+        <websearch>
+            <rec_category>0</rec_category>
+            <channelId>0</channelId>
+        </websearch>
+    </appmsg>
+    <fromusername>wxid_btigz8k3t55d22</fromusername>
+    <scene>0</scene>
+    <appinfo>
+        <version>1</version>
+        <appname></appname>
+    </appinfo>
+    <commenturl></commenturl>
+</msg>

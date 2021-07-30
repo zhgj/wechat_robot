@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<msg>
+    <appmsg appid="" sdkver="0">
+        <title>\u8bf7\u8f93\u5165\u63d0\u53d6\u7801_\u767e\u5ea6\u7f51\u76d8</title>
+        <des>https://pan.baidu.com/wap/init?surl=V9nliDJ0TDx6bWgYQ9UQtg</des>
+        <username />
+
+        <action>view</action>
+        <type>5</type>
+        <showtype>0</showtype>
+        <content />
+
+        <url>https://pan.baidu.com/wap/init?surl=V9nliDJ0TDx6bWgYQ9UQtg</url>
+        <lowurl />
+
+        <forwardflag>0</forwardflag>
+        <dataurl />
+
+        <lowdataurl />
+
+        <contentattr>0</contentattr>
+        <streamvideo>
+            <streamvideourl />
+
+            <streamvideototaltime>0</streamvideototaltime>
+            <streamvideotitle />
+
+            <streamvideowording />
+
+            <streamvideoweburl />
+
+            <streamvideothumburl />
+
+            <streamvideoaduxinfo />
+
+            <streamvideopublishid />
+
+        </streamvideo>
+        <canvasPageItem>
+            <canvasPageXml>
+                <![CDATA[]]>
+            </canvasPageXml>
+        </canvasPageItem>
+        <appattach>
+            <totallen>0</totallen>
+            <attachid />
+
+            <cdnattachurl />
+
+            <emoticonmd5></emoticonmd5>
+            <aeskey></aeskey>
+            <fileext />
+
+            <islargefilemsg>0</islargefilemsg>
+        </appattach>
+        <extinfo />
+
+        <androidsource>2</androidsource>
+        <sourceusername>17704803801@chatroom</sourceusername>
+        <sourcedisplayname />
+
+        <commenturl />
+
+        <thumburl />
+
+        <mediatagname />
+
+        <messageaction>
+            <![CDATA[]]>
+        </messageaction>
+        <messageext>
+            <![CDATA[]]>
+        </messageext>
+        <emoticongift>
+            <packageflag>0</packageflag>
+            <packageid />
+
+        </emoticongift>
+        <emoticonshared>
+            <packageflag>0</packageflag>
+            <packageid />
+
+        </emoticonshared>
+        <designershared>
+            <designeruin>0</designeruin>
+            <designername>null</designername>
+            <designerrediretcturl>null</designerrediretcturl>
+        </designershared>
+        <emotionpageshared>
+            <tid>0</tid>
+            <title>null</title>
+            <desc>null</desc>
+            <iconUrl>null</iconUrl>
+            <secondUrl>null</secondUrl>
+            <pageType>0</pageType>
+        </emotionpageshared>
+        <webviewshared>
+            <shareUrlOriginal>https://pan.baidu.com/s/1V9nliDJ0TDx6bWgYQ9UQtg</shareUrlOriginal>
+            <shareUrlOpen>https://pan.baidu.com/wap/init?surl=V9nliDJ0TDx6bWgYQ9UQtg</shareUrlOpen>
+            <jsAppId />
+
+            <publisherId>msg_1956560536510596026</publisherId>
+        </webviewshared>
+        <template_id />
+
+        <md5 />
+
+        <weappinfo>
+            <username />
+
+            <appid />
+
+            <appservicetype>0</appservicetype>
+            <secflagforsinglepagemode>0</secflagforsinglepagemode>
+            <videopageinfo>
+                <thumbwidth>0</thumbwidth>
+                <thumbheight>0</thumbheight>
+                <fromopensdk>0</fromopensdk>
+            </videopageinfo>
+        </weappinfo>
+        <statextstr />
+
+        <musicShareItem>
+            <musicDuration>0</musicDuration>
+        </musicShareItem>
+        <findernamecard>
+            <username />
+
+            <avatar>
+                <![CDATA[]]>
+            </avatar>
+            <nickname />
+
+            <auth_job />
+
+            <auth_icon>0</auth_icon>
+            <auth_icon_url />
+
+        </findernamecard>
+        <finderGuarantee>
+            <scene>
+                <![CDATA[0]]>
+            </scene>
+        </finderGuarantee>
+        <directshare>0</directshare>
+        <gamecenter>
+            <namecard>
+                <iconUrl />
+
+                <name />
+
+                <desc />
+
+                <tail />
+
+                <jumpUrl />
+
+            </namecard>
+        </gamecenter>
+        <patMsg>
+            <chatUser />
+
+            <records>
+                <recordNum>0</recordNum>
+            </records>
+        </patMsg>
+        <secretmsg>
+            <issecretmsg>0</issecretmsg>
+        </secretmsg>
+        <websearch>
+            <rec_category>0</rec_category>
+            <channelId>0</channelId>
+        </websearch>
+    </appmsg>
+    <fromusername>wxid_hzwhlf2n3om121</fromusername>
+    <scene>0</scene>
+    <appinfo>
+        <version>1</version>
+        <appname />
+
+    </appinfo>
+    <commenturl />
+
+</msg>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<msg>
+    <appmsg appid="" sdkver="0">
+        <title>\u54e6\u54e6 \u90a3\u5c31\u662f\u8bf4\u8fd9\u4e2a\u662f\u624b\u52a8\u6dfb\u52a0\u7684\u96c6\u4e2d\u5668\u5730\u5740\u3002</title>
+        <des />
+        <action>view</action>
+        <type>57</type>
+        <showtype>0</showtype>
+        <content />
+        <url />
+        <dataurl />
+        <lowurl />
+        <lowdataurl />
+        <recorditem><![CDATA[]]></recorditem>
+        <thumburl />
+        <messageaction />
+        <refermsg>
+            <type>3</type>
+            <svrid>4101232086412159639</svrid>
+            <fromusr>24239987929@chatroom</fromusr>
+            <chatusr>wxid_k66q8l9wzw0r</chatusr>
+            <displayname>\u5b8b\u708e\u73b2</displayname>
+            <msgsource>&lt;msgsource&gt;&lt;sec_msg_node&gt;&lt;uuid&gt;a7ee9ff35430af202b4da6f523fb5bb1_&lt;/uuid&gt;&lt;/sec_msg_node&gt;&lt;silence&gt;1&lt;/silence&gt;&lt;membercount&gt;17&lt;/membercount&gt;&lt;/msgsource&gt;</msgsource>
+            <content>&lt;?xml version="1.0"?&gt;&lt;msg&gt;&lt;img aeskey="7bcaa1df727725e96bc356fdd429e974" encryver="1" cdnthumbaeskey="7bcaa1df727725e96bc356fdd429e974" cdnthumburl="3078020100046c306a02010002046f4ff31c02032f565d02041ac8a3b4020460ed548c044535386434303434373637386536643961303561383630376334383639336362305f66316566323531622d613463632d343634302d396531382d3937303234363532663233300204010400010201000405004c54a100" cdnthumblength="3566" cdnthumbheight="0" cdnthumbwidth="0" cdnmidheight="0" cdnmidwidth="0" cdnhdheight="0" cdnhdwidth="0" cdnmidimgurl="3078020100046c306a02010002046f4ff31c02032f565d02041ac8a3b4020460ed548c044535386434303434373637386536643961303561383630376334383639336362305f66316566323531622d613463632d343634302d396531382d3937303234363532663233300204010400010201000405004c54a100" length="45403" cdnbigimgurl="3078020100046c306a02010002046f4ff31c02032f565d02041ac8a3b4020460ed548c044535386434303434373637386536643961303561383630376334383639336362305f66316566323531622d613463632d343634302d396531382d3937303234363532663233300204010400010201000405004c54a100" hdlength="223297" md5="d44e5d587e716b7d7d2706ec2b5bfaa0" /&gt;&lt;/msg&gt;</content>
+        </refermsg>
+        <extinfo />
+        <sourceusername />
+        <sourcedisplayname />
+        <commenturl />
+        <appattach>
+            <totallen>0</totallen>
+            <attachid />
+            <emoticonmd5 />
+            <fileext />
+            <aeskey />
+        </appattach>
+        <weappinfo>
+            <pagepath />
+            <username />
+            <appid />
+            <appservicetype>0</appservicetype>
+        </weappinfo>
+        <websearch />
+    </appmsg>
+    <fromusername>wxid_pak8agospop922</fromusername>
+    <scene>0</scene>
+    <appinfo>
+        <version>1</version>
+        <appname></appname>
+    </appinfo>
+    <commenturl></commenturl>
+</msg>

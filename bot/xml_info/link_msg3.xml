@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<msg>
+    <appmsg appid="wx3fcdd8310a136ff8" sdkver="0">
+        <title>\u7269\u6d41\u548c\u5feb\u9012\u6709\u4ec0\u4e48\u533a\u522b\uff1f</title>
+        <des>\u6709\u95ee\u9898\uff0c\u5c31\u4f1a\u6709\u7b54\u6848\u3002</des>
+        <username />
+        <action>view</action>
+        <type>5</type>
+        <showtype>0</showtype>
+        <content />
+        <url>https://wjrsbu.smartapps.cn/zhihu/answer?id=218108940&amp;isShared=1&amp;_swebfr=1&amp;hostname=baiduboxapp</url>
+        <lowurl />
+        <forwardflag>0</forwardflag>
+        <dataurl />
+        <lowdataurl />
+        <contentattr>0</contentattr>
+        <streamvideo>
+            <streamvideourl />
+            <streamvideototaltime>0</streamvideototaltime>
+            <streamvideotitle />
+            <streamvideowording />
+            <streamvideoweburl />
+            <streamvideothumburl />
+            <streamvideoaduxinfo />
+            <streamvideopublishid />
+        </streamvideo>
+        <canvasPageItem>
+            <canvasPageXml><![CDATA[]]></canvasPageXml>
+        </canvasPageItem>
+        <appattach>
+            <attachid />
+            <cdnthumburl>308187020100047b307902010002044422876f02032f565d020434c9a3b4020461010b0504546175706170706d73675f666335393931323566643262393865645f313632373435383330393033375f3330363236315f32383963383762322d613531352d343761342d626330392d6135323035346134396662620204010400030201000405004c54a100</cdnthumburl>
+            <cdnthumbmd5>0c8e7a6ca7b35f861a88aba69dd8665c</cdnthumbmd5>
+            <cdnthumblength>9362</cdnthumblength>
+            <cdnthumbheight>100</cdnthumbheight>
+            <cdnthumbwidth>100</cdnthumbwidth>
+            <cdnthumbaeskey>bc7dbceaccc957a056d9be008d479eb1</cdnthumbaeskey>
+            <aeskey>bc7dbceaccc957a056d9be008d479eb1</aeskey>
+            <encryver>1</encryver>
+            <fileext />
+            <islargefilemsg>0</islargefilemsg>
+        </appattach>
+        <extinfo />
+        <androidsource>2</androidsource>
+        <thumburl />
+        <mediatagname />
+        <messageaction><![CDATA[]]></messageaction>
+        <messageext><![CDATA[]]></messageext>
+        <emoticongift>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticongift>
+        <emoticonshared>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticonshared>
+        <designershared>
+            <designeruin>0</designeruin>
+            <designername>null</designername>
+            <designerrediretcturl>null</designerrediretcturl>
+        </designershared>
+        <emotionpageshared>
+            <tid>0</tid>
+            <title>null</title>
+            <desc>null</desc>
+            <iconUrl>null</iconUrl>
+            <secondUrl>null</secondUrl>
+            <pageType>0</pageType>
+        </emotionpageshared>
+        <webviewshared>
+            <shareUrlOriginal />
+            <shareUrlOpen />
+            <jsAppId />
+            <publisherId />
+        </webviewshared>
+        <template_id />
+        <md5>0c8e7a6ca7b35f861a88aba69dd8665c</md5>
+        <weappinfo>
+            <username />
+            <appid />
+            <appservicetype>0</appservicetype>
+            <secflagforsinglepagemode>0</secflagforsinglepagemode>
+            <videopageinfo>
+                <thumbwidth>100</thumbwidth>
+                <thumbheight>100</thumbheight>
+                <fromopensdk>0</fromopensdk>
+            </videopageinfo>
+        </weappinfo>
+        <statextstr>GhQKEnd4M2ZjZGQ4MzEwYTEzNmZmOA==</statextstr>
+        <musicShareItem>
+            <musicDuration>0</musicDuration>
+        </musicShareItem>
+        <findernamecard>
+            <username />
+            <avatar><![CDATA[]]></avatar>
+            <nickname />
+            <auth_job />
+            <auth_icon>0</auth_icon>
+            <auth_icon_url />
+        </findernamecard>
+        <finderGuarantee>
+            <scene><![CDATA[0]]></scene>
+        </finderGuarantee>
+        <directshare>0</directshare>
+        <gamecenter>
+            <namecard>
+                <iconUrl />
+                <name />
+                <desc />
+                <tail />
+                <jumpUrl />
+            </namecard>
+        </gamecenter>
+        <patMsg>
+            <chatUser />
+            <records>
+                <recordNum>0</recordNum>
+            </records>
+        </patMsg>
+        <secretmsg>
+            <issecretmsg>0</issecretmsg>
+        </secretmsg>
+        <websearch>
+            <rec_category>0</rec_category>
+            <channelId>0</channelId>
+        </websearch>
+    </appmsg>
+    <fromusername>zhanggaojiong</fromusername>
+    <scene>0</scene>
+    <appinfo>
+        <version>5</version>
+        <appname>\u767e\u5ea6APP</appname>
+    </appinfo>
+    <commenturl />
+</msg>
