@@ -4,7 +4,7 @@ import json
 
 class UserInfo:
     def trim(seif, str):
-        chars = ['-', '_', 'A', ':', '：', ' ', '的', '〈', '(', '[', ',', '，', '。', '、', '~', '～', '*', '•']
+        chars = ['-', '_', 'A', ':', '：', ' ', '的', '〈', '(', '[', ',', '，', '。', '、', '~', '～', '*', '•', 'de']
         for char in chars:
             str = str.strip(char).replace(char, '')
         return str

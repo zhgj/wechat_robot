@@ -10,7 +10,6 @@ class HttpRequest:
         line = Converter('zh-hans').convert(line)
         line.encode('utf-8')
         return line
-
     # 转换简体到繁体
     def chs_to_cht(self, line):
         line = Converter('zh-hant').convert(line)
@@ -32,7 +31,7 @@ class HttpRequest:
             except Exception as e:
                 print("get请求出现了异常：{0}".format(e))
         return res
-
+    # 保存gif
     def save_gif(self, path_dir, gif_uri):
         res = self.http_request(gif_uri, 'get')
         if res != '':
@@ -53,7 +52,7 @@ class HttpRequest:
                 f.write(requests.get(gif_uri).content)
             res = file_path
         return res
-
+    # 保存iciba每日音频和图片
     def save_iciba_mp3_and_img(self, path_dir, iciba_url):
         res = self.http_request(iciba_url, 'get')
         # mp3_file_path = ''
@@ -73,6 +72,43 @@ class HttpRequest:
     def bot_reply(self, bot_url, bot_url2, msg):
         msg = self.cht_to_chs(msg)
         if '笑话' in msg:
+            if '笑话分类' in msg:
+                return self.bot1_reply(bot_url, msg)
+            bot1_joke_type = {
+                                1:'夫妻',
+                                2:'恶心',
+                                3:'爱情',
+                                4:'恐怖',
+                                5:'家庭',
+                                6:'校园',
+                                7:'名著暴笑',
+                                8:'儿童',
+                                9:'医疗',
+                                10:'愚人',
+                                11:'司法',
+                                12:'交通',
+                                13:'交往',
+                                14:'动物',
+                                15:'民间',
+                                16:'顺口溜',
+                                17:'古代',
+                                18:'经营',
+                                19:'名人',
+                                20:'幽默',
+                                21:'搞笑歌词',
+                                22:'体育',
+                                23:'宗教',
+                                24:'文艺',
+                                25:'电脑',
+                                26:'恋爱必读',
+                                27:'英语',
+                                28:'原创',
+                                29:'综合',
+                                30:'求爱秘籍'
+                            }
+            for key, value in bot1_joke_type.items():
+                if value in msg:
+                    return self.bot1_reply(bot_url, msg)
             return self.bot1_reply(bot_url, msg) if random.randint(0, 1) else self.bot2_reply(bot_url2, msg)
         elif '接龙' in msg or '灵签' in msg:
             return self.bot2_reply(bot_url2, msg)
@@ -132,10 +168,10 @@ class HttpRequest:
         bot_res_json['content'] = bot_res_json['content'].replace('{br}', '\n')
         bot_res_json['content'] = bot_res_json['content'].split(
             '}', 1)[1] if '}' in bot_res_json['content'] else bot_res_json['content']
-        print(bot_res_json)
+        # print(bot_res_json)
         bot_res_json['content'] = self.cht_to_chs(
             bot_res_json['content']).replace('菲菲', '我')
-        print(bot_res_json)
+        # print(bot_res_json)
         return bot_res_json
 
 

@@ -4,16 +4,26 @@ from __future__ import unicode_literals
 import wechat
 import json
 import time
+import logging
 from wechat import WeChatManager, MessageType
 from queue import Queue
 from HttpRequest import HttpRequest
+from HttpRequest2 import HttpRequest2
 from RawMsg import RawMsg
 from UserInfo import UserInfo
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.jobstores.redis import RedisJobStore
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
+from time_nlp.TimeNormalizer import TimeNormalizer
+from datetime import datetime, timedelta
+from message.NextReply import *
 
 
 wechat_manager = WeChatManager(libs_path='../libs')
+
+# logging.basicConfig(level=logging.ERROR)
+logging.getLogger('apscheduler.executors.default').setLevel(logging.WARNING)
 
 bot_wxid = 'wxid_hzwhlf2n3om121'
 my_wxid = 'zhanggaojiong'
@@ -109,15 +119,20 @@ not_reply_list = ['wxid_d0xb5fea91xo21',  # 璐璐
                   '17882530434@chatroom',  # 易维远传设备交流群
                   '2654691168@chatroom']  # 三高大家庭
 
+iciba_everyday_remind_list = [my_wxid]
 # 各种消息的缓存队列
 msg_text_queue = Queue()
 msg_picture_queue = Queue()
+msg_voice_queue = Queue()
 msg_video_queue = Queue()
 msg_file_queue = Queue()
 msg_link_queue = Queue()
 msg_emoji_queue = Queue()
 msg_sys_queue = Queue()
 msg_pay_queue = Queue()
+msg_miniapp_queue = Queue()
+
+remind_queue = Queue()
 wechat_client_id = None
 # 存储拉取的群列表
 # base_dir = r'D:\Downloads\wechat_pc_api-master\bot'
@@ -130,6 +145,7 @@ group1_info_path = base_dir + r'\json_info\group1.json'
 group2_info_path = base_dir + r'\json_info\group2.json'
 
 request = HttpRequest()
+request2 = HttpRequest2()
 rawmsg = RawMsg()
 userinfo = UserInfo()
 # api机器人地址
@@ -137,6 +153,8 @@ bot_url = 'http://api.qingyunke.com/api.php?key=free&appid=0&msg={0}'
 bot_url2 = 'http://i.itpk.cn/api.php?question={0}'
 # iciba每日一词
 iciba_url = 'http://open.iciba.com/dsapi/'
+# 违规词检查
+censor_url = 'https://www.coder.work/textcensoring/getresult'
 
 # gif是否能发送
 
@@ -170,7 +188,8 @@ def bot_reply_type(client_id, message_data):
                     text_join = '、'.join(value[3][i])
                     print(key + ':' + text_join)
                     if '天气' in key:
-                        content = request.bot_reply(bot_url, bot_url2, text_join)['content']
+                        content = request.bot_reply(
+                            bot_url, bot_url2, text_join)['content']
                     else:
                         content = key + '：' + text_join
                     wechat_manager.send_text(
@@ -186,15 +205,91 @@ def bot_reply_type(client_id, message_data):
                             wechat_manager.send_user_card(
                                 client_id, message_data['to_wxid'], card)
 
-def everyday_task():
+# 每日iciba提醒任务
+
+
+def iciba_everyday_job():
     tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
-    wechat_manager.send_image(wechat_client_id, my_wxid, tts_img_path[1])
-    wechat_manager.send_file(wechat_client_id, my_wxid, tts_img_path[0])
+    for remind_wxid in iciba_everyday_remind_list:
+        wechat_manager.send_image(
+            wechat_client_id, remind_wxid, tts_img_path[1])
+        wechat_manager.send_file(
+            wechat_client_id, remind_wxid, tts_img_path[0])
     if bot_wxid != my_wxid:
         zx_wxid = 'wxid_37gktrv5yv5322'
         wechat_manager.send_image(wechat_client_id, zx_wxid, tts_img_path[1])
         wechat_manager.send_file(wechat_client_id, zx_wxid, tts_img_path[0])
-        
+
+# 发送提醒消息
+
+
+def send_remind_text(to_wxid, text):
+    wechat_manager.send_text(wechat_client_id, to_wxid, text)
+
+# 接收提醒消息后添加待提醒任务
+
+
+def add_date_job():
+    while not remind_queue.empty():
+        message_data = remind_queue.get()
+        remind_text = '提醒'
+        if remind_text in message_data['msg']:
+            time_remindcontent = message_data['msg'].split(remind_text)
+            time_remindcontent[1] = time_remindcontent[1].strip().replace(
+                '我', '')
+            if time_remindcontent[1] == '':
+                wechat_manager.send_text(
+                    wechat_client_id, message_data['from_wxid'], '请对我说：什么时间（多久后）提醒我干什么事')
+                break
+            tn = TimeNormalizer(isPreferFuture=False)
+            time_dict = tn.parse(time_remindcontent[0], datetime.now())
+            timeStr = ''
+            if 'error' in time_dict.keys():
+                wechat_manager.send_text(
+                    wechat_client_id, message_data['from_wxid'], '没理解你说的时间！换种表达方式？')
+                break
+            if time_dict['type'] == 'timestamp':
+                timeStr = time_dict['timestamp']
+            elif time_dict['type'] == 'timedelta':
+                time_delta_dict = time_dict['timedelta']
+                now = datetime.now()
+                delta = timedelta(days=time_delta_dict['year'] * 365 + time_delta_dict['month'] * 30 + time_delta_dict['day'],
+                                  hours=time_delta_dict['hour'], minutes=time_delta_dict['minute'], seconds=time_delta_dict['second'])
+                timeStr = str(now + delta).split('.')[0]
+            remind_time = datetime.strptime(timeStr, '%Y-%m-%d %H:%M:%S')
+            now = datetime.now()
+            print(now)
+            print(remind_time)
+            if remind_time < now:
+                wechat_manager.send_text(
+                    wechat_client_id, message_data['from_wxid'], timeStr + '，你在逗我吗？要提醒的时间点已经过去啦！')
+                break
+            delta_days = (remind_time - now).days
+            if delta_days > 365 * 80:
+                wechat_manager.send_text(
+                    wechat_client_id, message_data['from_wxid'], '超过80年？我怕你活不了那么久！')
+                break
+            elif delta_days > 365:
+                wechat_manager.send_text(
+                    wechat_client_id, message_data['from_wxid'], '超过1年了，我怕我活不了这么久！')
+                break
+            wechat_manager.send_text(
+                wechat_client_id, message_data['from_wxid'], reply_ok(timeStr, '', True))
+            remind_content = '\u23f0  ' + time_remindcontent[1]
+            redis_store = RedisJobStore(
+                host='localhost', port='6379', db=1, password='')
+            jobstores = {'redis': redis_store}
+            executors = {
+                'default': ThreadPoolExecutor(10),  # 默认线程数
+                'processpool': ProcessPoolExecutor(3)  # 默认进程
+            }
+            scheduler = BackgroundScheduler(
+                jobstores=jobstores, executors=executors)
+            scheduler.add_job(func=send_remind_text, args=[
+                              message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis')
+            scheduler.start()
+    # print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 # 这里测试函数回调
 
 
@@ -216,6 +311,8 @@ def on_recv(client_id, message_type, message_data):
             msg_text_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_PICTURE_MSG:
         msg_picture_queue.put(message_data)
+    elif message_type == MessageType.MT_RECV_VOICE_MSG:
+        msg_voice_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_VIDEO_MSG:
         msg_video_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_FILE_MSG:
@@ -228,6 +325,8 @@ def on_recv(client_id, message_type, message_data):
         msg_sys_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_WCPAY_MSG:
         msg_pay_queue.put(message_data)
+    elif message_type == MessageType.MT_RECV_MINIAPP_MSG:
+        msg_miniapp_queue.put(message_data)
     elif message_type == MessageType.MT_DATA_FRIENDS_MSG:
         with open(friend_info_path, 'wt') as f:
             f.write(json.dumps(message_data, indent=4, sort_keys=True))
@@ -282,40 +381,59 @@ if __name__ == "__main__":
     # date: 特定的时间点触发
     # interval: 固定时间间隔触发
     # cron: 在特定时间周期性地触发
-    scheduler.add_job(everyday_task, "cron", hour=6, minute=30)
+    scheduler.add_job(func=iciba_everyday_job,
+                      trigger="cron", hour=7, minute=30)
+    scheduler.add_job(func=add_date_job, trigger="interval", seconds=1)
     # scheduler.add_job(job, 'interval', seconds=1)
     scheduler.start()
 
     # 阻塞主线程
     while True:
         time.sleep(0.5)
-
         # 测试转发图片消息
         # wechat_manager.send_image(wechat_client_id, 'filehelper', r'C:\Users\zhanggaojiong\Downloads\wechat_pc_api-master\images\微信图片_20210710231432.png')
         while not msg_sys_queue.empty():
             message_data = msg_sys_queue.get()
             if '红包' in message_data['raw_msg'] and '手机' in message_data['raw_msg']:
-                wechat_manager.send_text(wechat_client_id, 'filehelper', '有人发红包啦！')
+                wechat_manager.send_text(
+                    wechat_client_id, 'filehelper', '有人发红包啦！')
                 wechat_manager.send_text(wechat_client_id, my_wxid, '有人发红包啦！')
-        
+
         while not msg_pay_queue.empty():
             message_data = msg_pay_queue.get()
-            wechat_manager.send_text(wechat_client_id, 'filehelper', '有人给你转账啦！')
-        
+            wechat_manager.send_text(
+                wechat_client_id, 'filehelper', '有人给你转账啦！')
+
         while not msg_text_queue.empty():
             message_data = msg_text_queue.get()
+            if '提醒' in message_data['msg'] and message_data['from_wxid'] != bot_wxid and message_data['room_wxid'] == '':
+                remind_queue.put(message_data)
             # print(message_data)
             # print('queue size:{0}'.format(msg_queue.qsize()))
             for key, value in exchange_msg_room_wxid.items():
                 if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid and bot_wxid not in message_data['at_user_list']:
-                    wechat_manager.send_text(wechat_client_id, value[2], value[1] if key != 2 else value[1].format(
-                        userinfo.get_nickname_by_wxid(group1_info_path, message_data['from_wxid'])) + message_data['msg'])
+                    res = request2.delay_censor_msg(censor_url, message_data['msg'])
+                    if res['is_pass']:
+                        wechat_manager.send_text(wechat_client_id, value[2], (value[1] if key != 2 else value[1].format(request.cht_to_chs(
+                            userinfo.get_nickname_by_wxid(group1_info_path, message_data['from_wxid'])))) + message_data['msg'])
+                    else:
+                        wechat_manager.send_text(
+                            wechat_client_id, my_wxid, '1群有人发违规内容：' + res['reason'])
                 elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid and bot_wxid not in message_data['at_user_list']:
-                    wechat_manager.send_text(wechat_client_id, value[0], value[3] if key != 2 else value[3].format(
-                        userinfo.get_nickname_by_wxid(group2_info_path, message_data['from_wxid'])) + message_data['msg'])
+                    res = request2.delay_censor_msg(censor_url, message_data['msg'])
+                    if res['is_pass']:
+                        wechat_manager.send_text(wechat_client_id, value[0], (value[3] if key != 2 else value[3].format(
+                            request.cht_to_chs(userinfo.get_nickname_by_wxid(group2_info_path, message_data['from_wxid'])))) + message_data['msg'])
+                    else:
+                        wechat_manager.send_text(
+                            wechat_client_id, my_wxid, '2群有人发违规内容：' + res['reason'])
             # 回复单聊消息
             if message_data['to_wxid'] == bot_wxid and message_data['from_wxid'] not in not_reply_list and message_data['from_wxid'] != bot_wxid:
-                bot_res_json = request.bot_reply(bot_url, bot_url2, message_data['msg'])
+                now = datetime.now()
+                bot_res_json = request.bot_reply(
+                    bot_url, bot_url2, message_data['msg'])
+                now2 = datetime.now()
+                print('机器人请求耗时:' + str((now2 - now).total_seconds()))
                 if bot_res_json['content'] != '':
                     wechat_manager.send_text(
                         wechat_client_id, message_data['from_wxid'], bot_res_json['content'])
@@ -360,6 +478,16 @@ if __name__ == "__main__":
 
             # if message_data['to_wxid'] == '24399591896@chatroom':
             #     wechat_manager.send_image(wechat_client_id, 'filehelper', message_data['image'])
+
+        while not msg_voice_queue.empty():
+            message_data = msg_voice_queue.get()
+            for value in exchange_msg_room_wxid.values():
+                if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid:
+                    wechat_manager.send_file(
+                        wechat_client_id, value[2], message_data['silk_file'])
+                elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid:
+                    wechat_manager.send_file(
+                        wechat_client_id, value[0], message_data['silk_file'])
 
         while not msg_video_queue.empty():
             message_data = msg_video_queue.get()
@@ -413,3 +541,10 @@ if __name__ == "__main__":
                 elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid:
                     wechat_manager.send_link(
                         wechat_client_id, value[0], title, desc, url, image_url)
+
+        while not msg_miniapp_queue.empty():
+            message_data = msg_miniapp_queue.get()
+            for key, value in exchange_msg_room_wxid.items():
+                if message_data['to_wxid'] in value:
+                    wechat_manager.send_text(
+                        wechat_client_id, my_wxid, '有人在群里发送了小程序！')
