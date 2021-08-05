@@ -242,6 +242,7 @@ def add_date_job():
                     wechat_client_id, message_data['from_wxid'], '请对我说：什么时间（多久后）提醒我干什么事')
                 break
             tn = TimeNormalizer(isPreferFuture=False)
+            time_remindcontent[0] = time_remindcontent[0].replace('以后', '').replace('之后', '').replace('后', '')
             time_dict = tn.parse(time_remindcontent[0], datetime.now())
             timeStr = ''
             if 'error' in time_dict.keys():
@@ -277,7 +278,7 @@ def add_date_job():
                 wechat_client_id, message_data['from_wxid'], reply_ok(timeStr, '', True))
             remind_content = '\u23f0  ' + time_remindcontent[1]
             redis_store = RedisJobStore(
-                host='localhost', port='6379', db=1, password='')
+                host='localhost', port='6379', db=0, password='')
             jobstores = {'redis': redis_store}
             executors = {
                 'default': ThreadPoolExecutor(10),  # 默认线程数
@@ -286,9 +287,58 @@ def add_date_job():
             scheduler = BackgroundScheduler(
                 jobstores=jobstores, executors=executors)
             scheduler.add_job(func=send_remind_text, args=[
-                              message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis')
+                              message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=30*60)
             scheduler.start()
     # print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+def add_date_job2(scheduler, message_data):
+    remind_text = '提醒'
+    time_remindcontent = message_data['msg'].split(remind_text)
+    time_remindcontent[1] = time_remindcontent[1].strip().replace(
+        '我', '')
+    if time_remindcontent[1] == '':
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], '请对我说：什么时间（多久后）提醒我干什么事')
+        return
+    tn = TimeNormalizer(isPreferFuture=False)
+    time_remindcontent[0] = time_remindcontent[0].replace('以后', '').replace('之后', '').replace('后', '')
+    time_dict = tn.parse(time_remindcontent[0], datetime.now())
+    timeStr = ''
+    if 'error' in time_dict.keys():
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], '没理解你说的时间！换种表达方式？')
+        return
+    if time_dict['type'] == 'timestamp':
+        timeStr = time_dict['timestamp']
+    elif time_dict['type'] == 'timedelta':
+        time_delta_dict = time_dict['timedelta']
+        now = datetime.now()
+        delta = timedelta(days=time_delta_dict['year'] * 365 + time_delta_dict['month'] * 30 + time_delta_dict['day'],
+                            hours=time_delta_dict['hour'], minutes=time_delta_dict['minute'], seconds=time_delta_dict['second'])
+        timeStr = str(now + delta).split('.')[0]
+    remind_time = datetime.strptime(timeStr, '%Y-%m-%d %H:%M:%S')
+    now = datetime.now()
+    print(now)
+    print(remind_time)
+    if remind_time < now:
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], timeStr + '，你在逗我吗？要提醒的时间点已经过去啦！')
+        return
+    delta_days = (remind_time - now).days
+    if delta_days > 365 * 80:
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], '超过80年？我怕你活不了那么久！')
+        return
+    elif delta_days > 365:
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], '超过1年了，我怕我活不了这么久！')
+        return
+    wechat_manager.send_text(
+        wechat_client_id, message_data['from_wxid'], reply_ok(timeStr, '', True))
+    remind_content = '\u23f0  ' + time_remindcontent[1]
+    scheduler.add_job(func=send_remind_text, args=[
+                        message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=30*60)
+    # scheduler.start()
 
 # 这里测试函数回调
 
@@ -312,7 +362,8 @@ def on_recv(client_id, message_type, message_data):
     elif message_type == MessageType.MT_RECV_PICTURE_MSG:
         msg_picture_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_VOICE_MSG:
-        msg_voice_queue.put(message_data)
+        print(message_type)
+        # msg_voice_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_VIDEO_MSG:
         msg_video_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_FILE_MSG:
@@ -377,13 +428,26 @@ if __name__ == "__main__":
     # wechat_manager.get_chatroom_members(wechat_client_id, exchange_msg_room_wxid[2][0])
     # wechat_manager.get_chatroom_members(wechat_client_id, exchange_msg_room_wxid[2][2])
 
-    scheduler = BackgroundScheduler()
+    # scheduler = BackgroundScheduler()
+    redis_store = RedisJobStore(
+        host='localhost', port='6379', db=0, password='')
+    jobstores = {'redis': redis_store}
+    executors = {
+        'default': ThreadPoolExecutor(10),  # 默认线程数
+        'processpool': ProcessPoolExecutor(3)  # 默认进程
+    }
+    job_defaults = {
+        'coalesce': True,
+        'max_instances': 3
+    }
+    scheduler = BackgroundScheduler(
+        jobstores=jobstores, executors=executors, job_defaults=job_defaults)
     # date: 特定的时间点触发
     # interval: 固定时间间隔触发
     # cron: 在特定时间周期性地触发
     scheduler.add_job(func=iciba_everyday_job,
-                      trigger="cron", hour=7, minute=30)
-    scheduler.add_job(func=add_date_job, trigger="interval", seconds=1)
+                      trigger="cron", hour=7, minute=30, jobstore='redis', misfire_grace_time=30*60, id='iciba_everyday_job', replace_existing=True)
+    # scheduler.add_job(func=add_date_job, trigger="interval", seconds=1)
     # scheduler.add_job(job, 'interval', seconds=1)
     scheduler.start()
 
@@ -407,7 +471,8 @@ if __name__ == "__main__":
         while not msg_text_queue.empty():
             message_data = msg_text_queue.get()
             if '提醒' in message_data['msg'] and message_data['from_wxid'] != bot_wxid and message_data['room_wxid'] == '':
-                remind_queue.put(message_data)
+                # remind_queue.put(message_data)
+                add_date_job2(scheduler, message_data)
             # print(message_data)
             # print('queue size:{0}'.format(msg_queue.qsize()))
             for key, value in exchange_msg_room_wxid.items():
