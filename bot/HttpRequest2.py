@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
 import json
 import gzip
 import time
@@ -45,13 +46,52 @@ class HttpRequest2:
             100: '触发默认违规词库'
         }
         params = {'content': msg}
-        headers = {'Content-Type': 'application/json; charset=utf-8'}
+        # headers = {'Content-Type': 'application/json; charset=utf-8'}
+        # headers = {'Host': 'www.coder.work',
+        #            'Connection': 'keep-alive',
+        #            'Content-Length': '51',
+        #            'sec-ch-ua': '''"Chromium";v="92", " Not A;Brand";v="99", "Microsoft Edge";v="92"''',
+        #            'Accept': 'application/json, text/javascript, */*; q=0.01',
+        #            'DNT': '1',
+        #            'X-Requested-With': 'XMLHttpRequest',
+        #            'sec-ch-ua-mobile': '?0',
+        #            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62',
+        #            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        #            'Origin': 'https://www.coder.work',
+        #            'Sec-Fetch-Site': 'same-origin',
+        #            'Sec-Fetch-Mode': 'cors',
+        #            'Sec-Fetch-Dest': 'empty',
+        #            'Referer': 'https://www.coder.work/textcensoring',
+        #            'Accept-Encoding': 'gzip, deflate, br',
+        #            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+        #            'Cookie': 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1627817825,1627874937,1627898091,1628054001; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1628054468'}
+        headers = {'Host': 'www.coder.work',
+                   'Connection': 'keep-alive',
+                   'sec-ch-ua': '''"Chromium";v="92", " Not A;Brand";v="99", "Microsoft Edge";v="92"''',
+                   'Accept': 'application/json, text/javascript, */*; q=0.01',
+                   'DNT': '1',
+                   'X-Requested-With': 'XMLHttpRequest',
+                   'sec-ch-ua-mobile': '?0',
+                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62',
+                   'Content-Type': 'application/json; charset=UTF-8',
+                   'Origin': 'https://www.coder.work',
+                   'Sec-Fetch-Site': 'same-origin',
+                   'Sec-Fetch-Mode': 'cors',
+                   'Sec-Fetch-Dest': 'empty',
+                   'Referer': 'https://www.coder.work/textcensoring',
+                   'Accept-Encoding': 'gzip, deflate, br',
+                   'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+                   'Cookie': 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1627817825,1627874937,1627898091,1628054001; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1628054468'}
         return_dict = {}
-        res = self.REQ(censor_url, params, headers)
-        return_dict['code'] = res['errcode']
-        if res['errcode'] == 0:
+        try:
+            res = self.REQ(censor_url, params, headers)
+            return_dict['code'] = res['errcode']
+        except Exception as e:
+            print('违规词检查接口请求出现了异常：{0}'.format(e))
+            return_dict['code'] = -1
+        if return_dict['code'] == 0:
             result = res['result']
-            return_dict['is_pass'] = True if result['conclusionType'] == 1 else False
+            return_dict['is_pass'] = True if result['conclusionType'] == 1 or result['conclusionType'] == 3 else False
             return_dict['reason'] = []
             for hit in result['hits']:
                 return_dict['reason'].append(reason_type_dict[hit['type']])
@@ -61,16 +101,22 @@ class HttpRequest2:
 
     # 频繁了，缓5秒
     def delay_censor_msg(self, censor_url, msg):
+        # return {'code': 0, 'is_pass': True, 'reason': ''}
+        now = datetime.now()
         res = self.censor_msg(censor_url, msg)
+        now2 = datetime.now()
+        print('违规词检查耗时：' + str((now2 - now).total_seconds()))
         if res['code'] != 0:
-            print('违规词检查接口频繁了，缓5秒')
+            print('\n违规词检查接口频繁了，缓5秒')
             time.sleep(5)
-            return self.censor_msg(censor_url, msg)
+            res = self.censor_msg(censor_url, msg)
+            if res['code'] != 0:
+                return {'code': 0, 'is_pass': True}
         return res
 
 
 # url = 'https://www.coder.work/textcensoring/getresult'
-# res = censor_msg(url, '18703636879')
+# res = HttpRequest2().censor_msg(url, '18703636879')
 # print(res)
 # print(type(res))
 
