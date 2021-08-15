@@ -91,7 +91,9 @@ class HttpRequest2:
             return_dict['code'] = -1
         if return_dict['code'] == 0:
             result = res['result']
-            return_dict['is_pass'] = True if result['conclusionType'] == 1 or result['conclusionType'] == 3 else False
+            return_dict['is_pass'] = True if result['conclusionType'] != 2 else False
+            if return_dict['is_pass'] == False:
+                print(res)
             return_dict['reason'] = []
             for hit in result['hits']:
                 return_dict['reason'].append(reason_type_dict[hit['type']])
