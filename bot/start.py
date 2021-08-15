@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import wechat
 import json
 import time
+import random
 import logging
 from wechat import WeChatManager, MessageType
 from queue import Queue
@@ -28,6 +29,7 @@ logging.getLogger('apscheduler.executors.default').setLevel(logging.WARNING)
 bot_wxid = 'wxid_hzwhlf2n3om121'
 my_wxid = 'zhanggaojiong'
 # bot_wxid = 'zhanggaojiong'
+# my_wxid = 'wxid_hzwhlf2n3om121'
 
 # 群消息互转
 # 格式：'romm_wxid1','romm_wxid1文本消息转出前缀','room_wxid2','room_wxid2文本消息转出前缀'
@@ -65,6 +67,7 @@ reply_msg_type = {
     '收破烂电话': [['破烂', '纸箱', '废品'], ['电话', '号码', '联系方式'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '18439451096', '18135751786', '13403851362', '15224993425', '13193600443', '15703890422']]],
     '所谓物业': [['物业', '修电梯', '领钥匙', '验房', '充电', '水厂', '售楼部', '电工'], ['电话', '号码', '联系方式', '找谁'], ['text', 'picture'], [['大门口值班室拍的，不知道还有用不'], commom_send_picture['物业']]],
     '张宏电话': [['张红', '张宏', '张洪', '张弘', '张的', '张会计'], ['电话', '号码', '联系方式'], ['text'], [['13525778772']]],
+    '马晨电话': [['马晨'], ['电话', '号码', '联系方式'], ['text'], [['18939496262']]],
     '周口车电话': [['周口'], ['电话', '号码', '联系方式', '车'], ['text', 'picture'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15516777066', '13673864370', '18438168828', '13253773308', '17796530101', '18736108761'], commom_send_picture['周口车']]],
     '淮阳车电话': [['淮阳'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15896799837', '15138363087']]],
     '漯河车电话': [['漯河'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '17657586111', '17329261181', '17329277977', '19939481799']]],
@@ -117,7 +120,8 @@ not_reply_list = ['wxid_d0xb5fea91xo21',  # 璐璐
                   '18035020979@chatroom',  # 西海岸水务自研协议开发交流群
                   '18421931893@chatroom',  # 积成远传设备调试交流
                   '17882530434@chatroom',  # 易维远传设备交流群
-                  '2654691168@chatroom']  # 三高大家庭
+                  '2654691168@chatroom',  # 三高大家庭
+                  '21602913425@chatroom']  # 清美
 
 iciba_everyday_remind_list = [my_wxid]
 # 各种消息的缓存队列
@@ -131,6 +135,7 @@ msg_emoji_queue = Queue()
 msg_sys_queue = Queue()
 msg_pay_queue = Queue()
 msg_miniapp_queue = Queue()
+msg_other_app_queue = Queue()
 
 remind_queue = Queue()
 wechat_client_id = None
@@ -210,6 +215,9 @@ def bot_reply_type(client_id, message_data):
 
 def iciba_everyday_job():
     tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
+    random_second = random.randint(0, 7200)
+    print('iciba_everyday_job 延迟秒数：' + str(random_second))
+    time.sleep(random_second)
     for remind_wxid in iciba_everyday_remind_list:
         wechat_manager.send_image(
             wechat_client_id, remind_wxid, tts_img_path[1])
@@ -242,7 +250,8 @@ def add_date_job():
                     wechat_client_id, message_data['from_wxid'], '请对我说：什么时间（多久后）提醒我干什么事')
                 break
             tn = TimeNormalizer(isPreferFuture=False)
-            time_remindcontent[0] = time_remindcontent[0].replace('以后', '').replace('之后', '').replace('后', '')
+            time_remindcontent[0] = time_remindcontent[0].replace(
+                '以后', '').replace('之后', '').replace('后', '')
             time_dict = tn.parse(time_remindcontent[0], datetime.now())
             timeStr = ''
             if 'error' in time_dict.keys():
@@ -287,9 +296,10 @@ def add_date_job():
             scheduler = BackgroundScheduler(
                 jobstores=jobstores, executors=executors)
             scheduler.add_job(func=send_remind_text, args=[
-                              message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=30*60)
+                              message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=60*60)
             scheduler.start()
     # print(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 
 def add_date_job2(scheduler, message_data):
     remind_text = '提醒'
@@ -301,7 +311,8 @@ def add_date_job2(scheduler, message_data):
             wechat_client_id, message_data['from_wxid'], '请对我说：什么时间（多久后）提醒我干什么事')
         return
     tn = TimeNormalizer(isPreferFuture=False)
-    time_remindcontent[0] = time_remindcontent[0].replace('以后', '').replace('之后', '').replace('后', '')
+    time_remindcontent[0] = time_remindcontent[0].replace(
+        '以后', '').replace('之后', '').replace('后', '')
     time_dict = tn.parse(time_remindcontent[0], datetime.now())
     timeStr = ''
     if 'error' in time_dict.keys():
@@ -314,7 +325,7 @@ def add_date_job2(scheduler, message_data):
         time_delta_dict = time_dict['timedelta']
         now = datetime.now()
         delta = timedelta(days=time_delta_dict['year'] * 365 + time_delta_dict['month'] * 30 + time_delta_dict['day'],
-                            hours=time_delta_dict['hour'], minutes=time_delta_dict['minute'], seconds=time_delta_dict['second'])
+                          hours=time_delta_dict['hour'], minutes=time_delta_dict['minute'], seconds=time_delta_dict['second'])
         timeStr = str(now + delta).split('.')[0]
     remind_time = datetime.strptime(timeStr, '%Y-%m-%d %H:%M:%S')
     now = datetime.now()
@@ -337,7 +348,7 @@ def add_date_job2(scheduler, message_data):
         wechat_client_id, message_data['from_wxid'], reply_ok(timeStr, '', True))
     remind_content = '\u23f0  ' + time_remindcontent[1]
     scheduler.add_job(func=send_remind_text, args=[
-                        message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=30*60)
+        message_data['from_wxid'], remind_content], trigger="date", next_run_time=timeStr, jobstore='redis', misfire_grace_time=60*60)
     # scheduler.start()
 
 # 这里测试函数回调
@@ -378,6 +389,8 @@ def on_recv(client_id, message_type, message_data):
         msg_pay_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_MINIAPP_MSG:
         msg_miniapp_queue.put(message_data)
+    elif message_type == MessageType.MT_RECV_OTHER_APP_MSG:
+        msg_other_app_queue.put(message_data)
     elif message_type == MessageType.MT_DATA_FRIENDS_MSG:
         with open(friend_info_path, 'wt') as f:
             f.write(json.dumps(message_data, indent=4, sort_keys=True))
@@ -385,8 +398,8 @@ def on_recv(client_id, message_type, message_data):
         with open(group_info_path, 'wt') as f:
             f.write(json.dumps(message_data, indent=4, sort_keys=True))
     elif message_type == MessageType.MT_DATA_CHATROOM_MEMBERS_MSG:
-        # print(group2_info_path)
-        with open(group2_info_path, 'wt') as f:
+        print(group1_info_path)
+        with open(group1_info_path, 'wt') as f:
             f.write(json.dumps(message_data, indent=4, sort_keys=True))
     else:
         print(message_type)
@@ -446,7 +459,13 @@ if __name__ == "__main__":
     # interval: 固定时间间隔触发
     # cron: 在特定时间周期性地触发
     scheduler.add_job(func=iciba_everyday_job,
-                      trigger="cron", hour=7, minute=30, jobstore='redis', misfire_grace_time=30*60, id='iciba_everyday_job', replace_existing=True)
+                      trigger="cron", hour=6, minute=30, jobstore='redis', misfire_grace_time=2*60*60, id='iciba_everyday_job', replace_existing=True)
+    scheduler.add_job(func=send_remind_text, args=[my_wxid, '\u23f0  还房贷'],
+                      trigger="cron", day=9, hour=15, minute=0, start_date='2017-10-9', end_date='2032-9-10', jobstore='redis', misfire_grace_time=24*60*60, id='house_loan_everymonth_job', replace_existing=True)
+    scheduler.add_job(func=send_remind_text, args=[my_wxid, '\u23f0  还车贷'],
+                      trigger="cron", day=15, hour=15, minute=0, start_date='2020-9-15', end_date='2022-9-16', jobstore='redis', misfire_grace_time=24*60*60, id='car_loan_everymonth_job', replace_existing=True)
+    scheduler.add_job(func=send_remind_text, args=[my_wxid, '\u23f0  交房租'],
+                      trigger="cron", month='2,5,8,11', day=20, hour=15, minute=0, start_date='2020-11-20', end_date='2023-5-21', jobstore='redis', misfire_grace_time=24*60*60, id='room_charge_every3month_job', replace_existing=True)
     # scheduler.add_job(func=add_date_job, trigger="interval", seconds=1)
     # scheduler.add_job(job, 'interval', seconds=1)
     scheduler.start()
@@ -477,7 +496,8 @@ if __name__ == "__main__":
             # print('queue size:{0}'.format(msg_queue.qsize()))
             for key, value in exchange_msg_room_wxid.items():
                 if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid and bot_wxid not in message_data['at_user_list']:
-                    res = request2.delay_censor_msg(censor_url, message_data['msg'])
+                    res = request2.delay_censor_msg(
+                        censor_url, message_data['msg'])
                     if res['is_pass']:
                         wechat_manager.send_text(wechat_client_id, value[2], (value[1] if key != 2 else value[1].format(request.cht_to_chs(
                             userinfo.get_nickname_by_wxid(group1_info_path, message_data['from_wxid'])))) + message_data['msg'])
@@ -485,7 +505,8 @@ if __name__ == "__main__":
                         wechat_manager.send_text(
                             wechat_client_id, my_wxid, '1群有人发违规内容：' + res['reason'])
                 elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid and bot_wxid not in message_data['at_user_list']:
-                    res = request2.delay_censor_msg(censor_url, message_data['msg'])
+                    res = request2.delay_censor_msg(
+                        censor_url, message_data['msg'])
                     if res['is_pass']:
                         wechat_manager.send_text(wechat_client_id, value[0], (value[3] if key != 2 else value[3].format(
                             request.cht_to_chs(userinfo.get_nickname_by_wxid(group2_info_path, message_data['from_wxid'])))) + message_data['msg'])
@@ -598,7 +619,7 @@ if __name__ == "__main__":
                 url = url.replace('&', '&amp;')
                 image_url = link_info['thumburl'] if link_info['thumburl'] != None else ''
                 image_url = image_url.replace('&', '&amp;')
-                default_image_url = 'https://www.showdoc.com.cn/server/api/attachment/visitfile/sign/0203e82433363e5ff9c6aa88aa9f1bbe?showdoc=.jpg)'
+                default_image_url = return_link_thumb_url().replace('&', '&amp;')
                 image_url = default_image_url if image_url.strip() == '' else image_url
                 if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid:
                     wechat_manager.send_link(
@@ -613,3 +634,22 @@ if __name__ == "__main__":
                 if message_data['to_wxid'] in value:
                     wechat_manager.send_text(
                         wechat_client_id, my_wxid, '有人在群里发送了小程序！')
+
+        while not msg_other_app_queue.empty():
+            message_data = msg_other_app_queue.get()
+            for value in exchange_msg_room_wxid.values():
+                link_info = rawmsg.get_link_msg_info(message_data['raw_msg'])
+                title = link_info['title'] if link_info['title'] != None else ''
+                desc = link_info['des'] if link_info['des'] != None else ''
+                url = link_info['url'] if link_info['url'] != None else ''
+                url = url.replace('&', '&amp;')
+                image_url = link_info['thumburl'] if link_info['thumburl'] != None else ''
+                image_url = image_url.replace('&', '&amp;')
+                default_image_url = return_link_thumb_url().replace('&', '&amp;')
+                image_url = default_image_url if image_url.strip() == '' else image_url
+                if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid:
+                    wechat_manager.send_link(
+                        wechat_client_id, value[2], title, desc, url, image_url)
+                elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid:
+                    wechat_manager.send_link(
+                        wechat_client_id, value[0], title, desc, url, image_url)
