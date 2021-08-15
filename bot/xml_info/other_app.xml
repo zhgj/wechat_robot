@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<msg>
+    <appmsg appid="wx3fcdd8310a136ff8" sdkver="0">
+        <title>\u4e1a\u4e3b\u201c\u9f50\u4e0a\u9635\u201d\u62c6\u9664\u7269\u4e1a\u8bbe\u7f6e\u7684\u8def\u9762\u969c\u788d</title>
+        <des>\u6b64\u89c6\u9891\u5df2\u670914\u4e07\u4eba\u56f4\u89c2\uff0c\u5feb\u6765\u52a0\u5165\uff01</des>
+        <username />
+        <action>view</action>
+        <type>4</type>
+        <showtype>0</showtype>
+        <content />
+        <url>https://xspshare.baidu.com/sv3?source=share-h5&amp;pd=feed&amp;vid=11694098696506058527&amp;shared_cuid=lavma_i9SugAavfzgOvkigaBS8_6aHaG_iHwa_P6Bu8R93aplIQRiE6wA&amp;shared_uid=_u2F8gumviecA&amp;nid=sv_11694098696506058527&amp;uk=5QvSPZcakM3PJh_AQv0jkQ</url>
+        <lowurl />
+        <forwardflag>0</forwardflag>
+        <dataurl />
+        <lowdataurl />
+        <contentattr>0</contentattr>
+        <streamvideo>
+            <streamvideourl />
+            <streamvideototaltime>0</streamvideototaltime>
+            <streamvideotitle />
+            <streamvideowording />
+            <streamvideoweburl />
+            <streamvideothumburl />
+            <streamvideoaduxinfo />
+            <streamvideopublishid />
+        </streamvideo>
+        <canvasPageItem>
+            <canvasPageXml><![CDATA[]]></canvasPageXml>
+        </canvasPageItem>
+        <appattach>
+            <attachid />
+            <cdnthumburl>308182020100047b30790201000204838e8d8102032f565d020421c9a3b40204610d5eb204546175706170706d73675f316162626233396336366365333833615f313632383236363136323335375f3336333935335f37633731653566332d333737382d346565612d393437622d3330393537623465343438370204011400030201000400</cdnthumburl>
+            <cdnthumbmd5>3e287fb2112bad476d46baa42daa8da0</cdnthumbmd5>
+            <cdnthumblength>18352</cdnthumblength>
+            <cdnthumbheight>128</cdnthumbheight>
+            <cdnthumbwidth>72</cdnthumbwidth>
+            <cdnthumbaeskey>b853bc4e3570d280521d2c22d1625497</cdnthumbaeskey>
+            <aeskey>b853bc4e3570d280521d2c22d1625497</aeskey>
+            <encryver>1</encryver>
+            <fileext />
+            <islargefilemsg>0</islargefilemsg>
+        </appattach>
+        <extinfo />
+        <androidsource>2</androidsource>
+        <thumburl />
+        <mediatagname />
+        <messageaction><![CDATA[]]></messageaction>
+        <messageext><![CDATA[]]></messageext>
+        <emoticongift>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticongift>
+        <emoticonshared>
+            <packageflag>0</packageflag>
+            <packageid />
+        </emoticonshared>
+        <designershared>
+            <designeruin>0</designeruin>
+            <designername>null</designername>
+            <designerrediretcturl>null</designerrediretcturl>
+        </designershared>
+        <emotionpageshared>
+            <tid>0</tid>
+            <title>null</title>
+            <desc>null</desc>
+            <iconUrl>null</iconUrl>
+            <secondUrl>null</secondUrl>
+            <pageType>0</pageType>
+        </emotionpageshared>
+        <webviewshared>
+            <shareUrlOriginal />
+            <shareUrlOpen />
+            <jsAppId />
+            <publisherId />
+        </webviewshared>
+        <template_id />
+        <md5>3e287fb2112bad476d46baa42daa8da0</md5>
+        <weappinfo>
+            <username />
+            <appid />
+            <appservicetype>0</appservicetype>
+            <secflagforsinglepagemode>0</secflagforsinglepagemode>
+            <videopageinfo>
+                <thumbwidth>72</thumbwidth>
+                <thumbheight>128</thumbheight>
+                <fromopensdk>0</fromopensdk>
+            </videopageinfo>
+        </weappinfo>
+        <statextstr>GhQKEnd4M2ZjZGQ4MzEwYTEzNmZmOA==</statextstr>
+        <musicShareItem>
+            <musicDuration>0</musicDuration>
+        </musicShareItem>
+        <findernamecard>
+            <username />
+            <avatar><![CDATA[]]></avatar>
+            <nickname />
+            <auth_job />
+            <auth_icon>0</auth_icon>
+            <auth_icon_url />
+        </findernamecard>
+        <finderGuarantee>
+            <scene><![CDATA[0]]></scene>
+        </finderGuarantee>
+        <directshare>0</directshare>
+        <gamecenter>
+            <namecard>
+                <iconUrl />
+                <name />
+                <desc />
+                <tail />
+                <jumpUrl />
+            </namecard>
+        </gamecenter>
+        <patMsg>
+            <chatUser />
+            <records>
+                <recordNum>0</recordNum>
+            </records>
+        </patMsg>
+        <secretmsg>
+            <issecretmsg>0</issecretmsg>
+        </secretmsg>
+        <websearch>
+            <rec_category>0</rec_category>
+            <channelId>0</channelId>
+        </websearch>
+    </appmsg>
+    <fromusername>zhanggaojiong</fromusername>
+    <scene>0</scene>
+    <appinfo>
+        <version>5</version>
+        <appname>\u767e\u5ea6APP</appname>
+    </appinfo>
+    <commenturl />
+</msg>
