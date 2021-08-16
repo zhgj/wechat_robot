@@ -54,19 +54,23 @@ class HttpRequest:
         return res
     # 保存iciba每日音频和图片
     def save_iciba_mp3_and_img(self, path_dir, iciba_url):
-        res = self.http_request(iciba_url, 'get')
-        # mp3_file_path = ''
-        # img_file_path = ''
-        if res != '':
-            iciba_info = res.json()
-            filename = iciba_info['dateline'] + '_' + iciba_info['note']
-            mp3_file_path = path_dir + '\\' + filename + '.mp3'
-            with open(mp3_file_path, 'wb') as f:
-                f.write(requests.get(iciba_info['tts']).content)
-            img_file_path = path_dir + '\\' + filename +'.png'
-            with open(img_file_path, 'wb') as f:
-                f.write(requests.get(iciba_info['fenxiang_img']).content)
-        return mp3_file_path, img_file_path
+        try:
+            res = self.http_request(iciba_url, 'get')
+            # mp3_file_path = ''
+            # img_file_path = ''
+            if res != '':
+                iciba_info = res.json()
+                filename = iciba_info['dateline'] + '_' + iciba_info['note']
+                mp3_file_path = path_dir + '\\' + filename + '.mp3'
+                with open(mp3_file_path, 'wb') as f:
+                    f.write(requests.get(iciba_info['tts']).content)
+                img_file_path = path_dir + '\\' + filename +'.png'
+                with open(img_file_path, 'wb') as f:
+                    f.write(requests.get(iciba_info['fenxiang_img']).content)
+            return mp3_file_path, img_file_path
+        except Exception as e:
+            print('iciba接口异常：{0}'.format(e))
+            return '', ''
 
     # 获取API聊天机器人回复内容
     def bot_reply(self, bot_url, bot_url2, msg):

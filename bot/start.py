@@ -215,9 +215,12 @@ def bot_reply_type(client_id, message_data):
 
 def iciba_everyday_job():
     tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
-    random_second = random.randint(0, 7200)
-    print('iciba_everyday_job 延迟秒数：' + str(random_second))
-    time.sleep(random_second)
+    if tts_img_path[0] == '' or tts_img_path[1] == '':
+        time.sleep(5)
+        tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
+    # random_second = random.randint(0, 7200)
+    # print('iciba_everyday_job 延迟秒数：' + str(random_second))
+    # time.sleep(random_second)
     for remind_wxid in iciba_everyday_remind_list:
         wechat_manager.send_image(
             wechat_client_id, remind_wxid, tts_img_path[1])
@@ -616,6 +619,8 @@ if __name__ == "__main__":
                 title = link_info['title'] if link_info['title'] != None else ''
                 desc = link_info['des'] if link_info['des'] != None else ''
                 url = link_info['url'] if link_info['url'] != None else ''
+                if url == '':
+                    break
                 url = url.replace('&', '&amp;')
                 image_url = link_info['thumburl'] if link_info['thumburl'] != None else ''
                 image_url = image_url.replace('&', '&amp;')
@@ -642,6 +647,8 @@ if __name__ == "__main__":
                 title = link_info['title'] if link_info['title'] != None else ''
                 desc = link_info['des'] if link_info['des'] != None else ''
                 url = link_info['url'] if link_info['url'] != None else ''
+                if url == '':
+                    break
                 url = url.replace('&', '&amp;')
                 image_url = link_info['thumburl'] if link_info['thumburl'] != None else ''
                 image_url = image_url.replace('&', '&amp;')
