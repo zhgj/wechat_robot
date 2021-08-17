@@ -19,6 +19,8 @@ from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 from time_nlp.TimeNormalizer import TimeNormalizer
 from datetime import datetime, timedelta
 from message.NextReply import *
+from Dat2Img import *
+from hubserving import *
 
 
 wechat_manager = WeChatManager(libs_path='../libs')
@@ -160,6 +162,10 @@ bot_url2 = 'http://i.itpk.cn/api.php?question={0}'
 iciba_url = 'http://open.iciba.com/dsapi/'
 # 违规词检查
 censor_url = 'https://www.coder.work/textcensoring/getresult'
+# OCR识别url
+ocr_url = 'http://127.0.0.1:9890/predict/ocr_system'
+# 图像识别开关
+ocr_switch = True
 
 # gif是否能发送
 
@@ -217,10 +223,11 @@ def iciba_everyday_job():
     tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
     if tts_img_path[0] == '' or tts_img_path[1] == '':
         time.sleep(5)
-        tts_img_path = request.save_iciba_mp3_and_img(iciba_path_dir, iciba_url)
-    # random_second = random.randint(0, 7200)
-    # print('iciba_everyday_job 延迟秒数：' + str(random_second))
-    # time.sleep(random_second)
+        tts_img_path = request.save_iciba_mp3_and_img(
+            iciba_path_dir, iciba_url)
+    random_second = random.randint(0, 7200)
+    print('iciba_everyday_job 延迟秒数：' + str(random_second))
+    time.sleep(random_second)
     for remind_wxid in iciba_everyday_remind_list:
         wechat_manager.send_image(
             wechat_client_id, remind_wxid, tts_img_path[1])
@@ -374,13 +381,16 @@ def on_recv(client_id, message_type, message_data):
         else:
             msg_text_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_PICTURE_MSG:
+        time.sleep(2)
         msg_picture_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_VOICE_MSG:
         print(message_type)
         # msg_voice_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_VIDEO_MSG:
+        time.sleep(2)
         msg_video_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_FILE_MSG:
+        time.sleep(2)
         msg_file_queue.put(message_data)
     elif message_type == MessageType.MT_RECV_LINK_MSG:
         msg_link_queue.put(message_data)
@@ -559,14 +569,35 @@ if __name__ == "__main__":
             for value in exchange_msg_room_wxid.values():
                 # print(value)
                 if message_data['to_wxid'] == value[0] and message_data['from_wxid'] != bot_wxid:
-                    wechat_manager.send_image(
-                        wechat_client_id, value[2], message_data['image'])
+                    if ocr_switch == False:
+                        wechat_manager.send_image(
+                            wechat_client_id, value[2], message_data['image'])
+                    else:
+                        img = dat2img_main(message_data['image'])
+                        text = get_ocr_text(ocr_main(ocr_url, img))
+                        res = request2.delay_censor_msg(censor_url, text)
+                        is_pass = res['is_pass']
+                        if is_pass:
+                            wechat_manager.send_image(
+                                wechat_client_id, value[2], message_data['image'])
+                        else:
+                            wechat_manager.send_text(
+                                wechat_client_id, my_wxid, '1群有人发违规图片：' + res['reason'])
                 elif message_data['to_wxid'] == value[2] and message_data['from_wxid'] != bot_wxid:
-                    wechat_manager.send_image(
-                        wechat_client_id, value[0], message_data['image'])
-
-            # if message_data['to_wxid'] == '24399591896@chatroom':
-            #     wechat_manager.send_image(wechat_client_id, 'filehelper', message_data['image'])
+                    if ocr_switch == False:
+                        wechat_manager.send_image(
+                            wechat_client_id, value[0], message_data['image'])
+                    else:
+                        img = dat2img_main(message_data['image'])
+                        text = get_ocr_text(ocr_main(ocr_url, img))
+                        res = request2.delay_censor_msg(censor_url, text)
+                        is_pass = res['is_pass']
+                        if is_pass:
+                            wechat_manager.send_image(
+                                wechat_client_id, value[0], message_data['image'])
+                        else:
+                            wechat_manager.send_text(
+                                wechat_client_id, my_wxid, '2群有人发违规图片：' + res['reason'])
 
         while not msg_voice_queue.empty():
             message_data = msg_voice_queue.get()
