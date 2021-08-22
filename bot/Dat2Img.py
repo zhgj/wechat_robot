@@ -82,7 +82,7 @@ def imageDecode2(temp_path, dat_file_name, out_path):
     else:
         mat = '.jpg'
 
-    out = out_path + '/' + dat_file_name + mat  # 图片输出路径
+    out = out_path + '\\' + dat_file_name + mat  # 图片输出路径
     png_write = open(out, "wb")  # 图片写入
     dat_read.seek(0)  # 重置文件指针位置
 
