@@ -52,6 +52,7 @@ def get_ocr_text(ocr_result):
     text = ''
     for one_result in result_list:
         text += (one_result['text'] + '\n')
+    text = text.strip()
     print(text)
     return text
 

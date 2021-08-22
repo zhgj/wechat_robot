@@ -60,7 +60,8 @@ commom_send_picture = {
     '水费计算': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\2dfb35a679ba423900ea8c1a40ad2fe2.dat'],
     '天然气': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c0b27cb695bbc1c9ff4970645556013d.dat'],
     '领钥匙': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\28feb1c2a98a7d1a935700a5617d6a81.dat'],
-    '打疫苗': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c79453aad013c863f03fe0accedc9b25.dat']
+    '打疫苗': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c79453aad013c863f03fe0accedc9b25.dat'],
+    '充电费': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-08\\c74458a415fee2a0a6c869ddcc94e101.dat']
 }
 
 # 格式：[['触发条件1','触发条件2'], ['触发条件1','触发条件2'], ['消息回复类型1','消息回复类型2'], [['回复内容1', '回复内容2'], ['回复内容1', '回复内容2']]]
@@ -68,12 +69,13 @@ commom_send_picture = {
 reply_msg_type = {
     '收破烂电话': [['破烂', '纸箱', '废品'], ['电话', '号码', '联系方式'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '18439451096', '18135751786', '13403851362', '15224993425', '13193600443', '15703890422']]],
     '所谓物业': [['物业', '修电梯', '领钥匙', '验房', '充电', '水厂', '售楼部', '电工'], ['电话', '号码', '联系方式', '找谁'], ['text', 'picture'], [['大门口值班室拍的，不知道还有用不'], commom_send_picture['物业']]],
+    '充电费':[['充电', '陈'], ['电话', '号码', '联系方式', '找谁'], ['text', 'picture'], [['陈 15938602545'], commom_send_picture['充电费']]],
     '张宏电话': [['张红', '张宏', '张洪', '张弘', '张的', '张会计'], ['电话', '号码', '联系方式'], ['text'], [['13525778772']]],
     '马晨电话': [['马晨'], ['电话', '号码', '联系方式'], ['text'], [['18939496262']]],
     '周口车电话': [['周口'], ['电话', '号码', '联系方式', '车'], ['text', 'picture'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15516777066', '13673864370', '18438168828', '13253773308', '17796530101', '18736108761'], commom_send_picture['周口车']]],
     '淮阳车电话': [['淮阳'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15896799837', '15138363087']]],
     '漯河车电话': [['漯河'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '17657586111', '17329261181', '17329277977', '19939481799']]],
-    '周口天气': [['老家', '今天', '周口', '项城', '明天'], ['天气', '雨', '雪', '风'], ['text'], [['周口天气']]],
+    '周口天气': [['老家', '今天', '周口', '项城', '明天'], ['天气', '下雨', '有雨', '下雪', '有雪', '刮风'], ['text'], [['周口天气']]],
     '水费问题': [['水费'], ['咋算', '阶梯', '计算'], ['text', 'picture'], [['水费是按阶梯的，一个月只有8吨按3.5算的，微信支付宝都可以交'], commom_send_picture['水费计算']]],
     '电费问题': [['电费'], ['咋算', '如何算', '多钱', '多少钱', '去哪'], ['text'], [['500块钱充880度，算下来一度是：0.5681818...。电只能在售楼部交，卡里有应急的10度电']]],
     '天然气问题': [['燃气', '天然气'], ['去哪', '在哪', '电话', '号码', '联系方式', '网上'], ['text', 'picture'], [['\n平安大道(老环城路)与富民路交叉路口往东南约90米', '红旗学校斜对面吧，这几个电话你试试吧，问一下', '(0394)4281234', '绑定卡号，手机上也可以缴费', '第一次需要去营业厅，以后就不用了'], commom_send_picture['天然气']]],
@@ -297,7 +299,7 @@ def add_date_job():
                 wechat_client_id, message_data['from_wxid'], reply_ok(timeStr, '', True))
             remind_content = '\u23f0  ' + time_remindcontent[1]
             redis_store = RedisJobStore(
-                host='localhost', port='6379', db=0, password='')
+                host='localhost', port='6379', db=15, password='')
             jobstores = {'redis': redis_store}
             executors = {
                 'default': ThreadPoolExecutor(10),  # 默认线程数
@@ -456,7 +458,7 @@ if __name__ == "__main__":
 
     # scheduler = BackgroundScheduler()
     redis_store = RedisJobStore(
-        host='localhost', port='6379', db=0, password='')
+        host='localhost', port='6379', db=15, password='')
     jobstores = {'redis': redis_store}
     executors = {
         'default': ThreadPoolExecutor(10),  # 默认线程数
