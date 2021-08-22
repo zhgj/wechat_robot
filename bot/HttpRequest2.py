@@ -3,6 +3,7 @@
 
 from datetime import datetime
 import json
+import random
 import gzip
 import time
 from urllib import request, parse
@@ -72,7 +73,7 @@ class HttpRequest2:
                    'DNT': '1',
                    'X-Requested-With': 'XMLHttpRequest',
                    'sec-ch-ua-mobile': '?0',
-                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62',
+                   'User-Agent': random.choice(('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.62', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.73')),
                    'Content-Type': 'application/json; charset=UTF-8',
                    'Origin': 'https://www.coder.work',
                    'Sec-Fetch-Site': 'same-origin',
@@ -81,7 +82,7 @@ class HttpRequest2:
                    'Referer': 'https://www.coder.work/textcensoring',
                    'Accept-Encoding': 'gzip, deflate, br',
                    'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
-                   'Cookie': 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1627817825,1627874937,1627898091,1628054001; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1628054468'}
+                   'Cookie': random.choice(('Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1627817825,1627874937,1627898091,1628054001; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1628054468', 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; zrCookie=814997469; Hm_lvt_9cc074900445f1842472986022b3fd60=1628757172,1629183629; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1628756216,1629179941,1629182889,1629249848; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1629249850', 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; zrCookie=814997469; Hm_lvt_9cc074900445f1842472986022b3fd60=1628757172,1629183629; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1628756216,1629179941,1629182889,1629249848; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1629250656', 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; zrCookie=814997469; Hm_lvt_9cc074900445f1842472986022b3fd60=1628757172,1629183629; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1628756216,1629179941,1629182889,1629249848; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1629250741', 'Hm_lvt_1230496a24f886be1982e4b1d17d9884=1621580125; zrCookie=814997469; Hm_lvt_9cc074900445f1842472986022b3fd60=1628757172,1629183629; Hm_lvt_d26f2298d3a7fe583e547d2101e22936=1628756216,1629179941,1629182889,1629249848; Hm_lpvt_d26f2298d3a7fe583e547d2101e22936=1629250832'))}
         return_dict = {}
         try:
             res = self.REQ(censor_url, params, headers)
