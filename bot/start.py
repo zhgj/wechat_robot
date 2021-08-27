@@ -21,6 +21,7 @@ from datetime import datetime, timedelta
 from message.NextReply import *
 from Dat2Img import *
 from hubserving import *
+from functools import reduce
 
 
 wechat_manager = WeChatManager(libs_path='../libs')
@@ -221,7 +222,7 @@ def bot_reply_type(client_id, message_data):
                 elif send_type == 'link':
                     for link in value[3][i]:
                         wechat_manager.send_link(
-                            client_id, message_data['to_wxid'], '接种记录查询--豫苗通', link, link, return_link_thumb_url())
+                            client_id, message_data['to_wxid'], '接种记录查询--豫苗通', link, link, 'https://www.honlivhpit.com/static/image/icon.png')
 
 # 每日iciba提醒任务
 
@@ -251,6 +252,12 @@ def iciba_everyday_job():
 def send_remind_text(to_wxid, text):
     wechat_manager.send_text(wechat_client_id, to_wxid, text)
 
+# 字符串中多个字符替换为1个字符
+
+
+def replace_char(str, old_char, new_char):
+    return reduce(lambda str, char: str.replace(char, new_char), old_char, str)
+
 # 接收提醒消息后添加待提醒任务
 
 
@@ -269,6 +276,24 @@ def add_date_job():
             tn = TimeNormalizer(isPreferFuture=False)
             time_remindcontent[0] = time_remindcontent[0].replace(
                 '以后', '').replace('之后', '').replace('后', '')
+            time_remindcontent[0] = time_remindcontent[0].replace(
+                '半小时', '30分钟')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '一1', '1小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '两2', '2小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '三3', '3小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '四4', '4小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '五5', '5小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '六6', '6小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '七7', '7小时')
+            time_remindcontent[0] = replace_char(
+                time_remindcontent[0], '八8', '8小时')
             time_dict = tn.parse(time_remindcontent[0], datetime.now())
             timeStr = ''
             if 'error' in time_dict.keys():
@@ -330,6 +355,16 @@ def add_date_job2(scheduler, message_data):
     tn = TimeNormalizer(isPreferFuture=False)
     time_remindcontent[0] = time_remindcontent[0].replace(
         '以后', '').replace('之后', '').replace('后', '')
+    time_remindcontent[0] = time_remindcontent[0].replace(
+        '半小时', '30分钟').replace('个', '小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '一1', '1小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '两2', '2小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '三3', '3小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '四4', '4小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '五5', '5小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '六6', '6小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '七7', '7小时')
+    # time_remindcontent[0] = replace_char(time_remindcontent[0], '八8', '8小时')
     time_dict = tn.parse(time_remindcontent[0], datetime.now())
     timeStr = ''
     if 'error' in time_dict.keys():
