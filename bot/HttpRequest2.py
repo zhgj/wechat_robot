@@ -32,6 +32,13 @@ class HttpRequest2:
 
             return res
 
+    def define_msg_is_pass(self, result):
+        hits = result['hits']
+        for hit in hits:
+            if len(hit['word_array']) > 0:
+                return False
+        return True
+
     # 检查消息是否包含敏感词
 
     def censor_msg(self, censor_url, msg):
@@ -92,7 +99,8 @@ class HttpRequest2:
             return_dict['code'] = -1
         if return_dict['code'] == 0:
             result = res['result']
-            return_dict['is_pass'] = True if result['conclusionType'] != 2 else False
+            # return_dict['is_pass'] = True if result['conclusionType'] != 2 else False
+            return_dict['is_pass'] = self.define_msg_is_pass(result)
             if return_dict['is_pass'] == False:
                 print(res)
             return_dict['reason'] = []
