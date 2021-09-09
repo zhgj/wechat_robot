@@ -11,11 +11,13 @@ class HttpRequest:
         line.encode('utf-8')
         return line
     # 转换简体到繁体
+
     def chs_to_cht(self, line):
         line = Converter('zh-hant').convert(line)
         line.encode('utf-8')
         return line
     # 发送http请求
+
     def http_request(self, url, http_method, params=None):
         res = ''
         if http_method.upper() == 'POST':
@@ -32,6 +34,7 @@ class HttpRequest:
                 print("get请求出现了异常：{0}".format(e))
         return res
     # 保存gif
+
     def save_gif(self, path_dir, gif_uri):
         res = self.http_request(gif_uri, 'get')
         if res != '':
@@ -53,6 +56,7 @@ class HttpRequest:
             res = file_path
         return res
     # 保存iciba每日音频和图片
+
     def save_iciba_mp3_and_img(self, path_dir, iciba_url):
         try:
             res = self.http_request(iciba_url, 'get')
@@ -64,7 +68,7 @@ class HttpRequest:
                 mp3_file_path = path_dir + '\\' + filename + '.mp3'
                 with open(mp3_file_path, 'wb') as f:
                     f.write(requests.get(iciba_info['tts']).content)
-                img_file_path = path_dir + '\\' + filename +'.png'
+                img_file_path = path_dir + '\\' + filename + '.png'
                 with open(img_file_path, 'wb') as f:
                     f.write(requests.get(iciba_info['fenxiang_img']).content)
             return mp3_file_path, img_file_path
@@ -79,37 +83,37 @@ class HttpRequest:
             if '笑话分类' in msg:
                 return self.bot1_reply(bot_url, msg)
             bot1_joke_type = {
-                                1:'夫妻',
-                                2:'恶心',
-                                3:'爱情',
-                                4:'恐怖',
-                                5:'家庭',
-                                6:'校园',
-                                7:'名著暴笑',
-                                8:'儿童',
-                                9:'医疗',
-                                10:'愚人',
-                                11:'司法',
-                                12:'交通',
-                                13:'交往',
-                                14:'动物',
-                                15:'民间',
-                                16:'顺口溜',
-                                17:'古代',
-                                18:'经营',
-                                19:'名人',
-                                20:'幽默',
-                                21:'搞笑歌词',
-                                22:'体育',
-                                23:'宗教',
-                                24:'文艺',
-                                25:'电脑',
-                                26:'恋爱必读',
-                                27:'英语',
-                                28:'原创',
-                                29:'综合',
-                                30:'求爱秘籍'
-                            }
+                1: '夫妻',
+                2: '恶心',
+                3: '爱情',
+                4: '恐怖',
+                5: '家庭',
+                6: '校园',
+                7: '名著暴笑',
+                8: '儿童',
+                9: '医疗',
+                10: '愚人',
+                11: '司法',
+                12: '交通',
+                13: '交往',
+                14: '动物',
+                15: '民间',
+                16: '顺口溜',
+                17: '古代',
+                18: '经营',
+                19: '名人',
+                20: '幽默',
+                21: '搞笑歌词',
+                22: '体育',
+                23: '宗教',
+                24: '文艺',
+                25: '电脑',
+                26: '恋爱必读',
+                27: '英语',
+                28: '原创',
+                29: '综合',
+                30: '求爱秘籍'
+            }
             for key, value in bot1_joke_type.items():
                 if value in msg:
                     return self.bot1_reply(bot_url, msg)
@@ -118,7 +122,7 @@ class HttpRequest:
             return self.bot2_reply(bot_url2, msg)
         else:
             return self.bot1_reply(bot_url, msg)
-    
+
     def bot2_reply(self, bot_url, msg):
         bot_res_json = {}
         if '观音灵签' == msg or '月老灵签' == msg or '财神爷灵签' == msg:
@@ -131,7 +135,8 @@ class HttpRequest:
             # 但格式化时，可用ensure_ascii=False解决
             # sort_keys=False，意思是不对json进行排序
             try:
-                json_res = json.dumps(json.loads(bot_res.text.encode('utf-8').decode('utf-8-sig')), indent=4, sort_keys=False, ensure_ascii=False)
+                json_res = json.dumps(json.loads(bot_res.text.encode(
+                    'utf-8').decode('utf-8-sig')), indent=4, sort_keys=False, ensure_ascii=False)
             except Exception as e:
                 print("bot2：json.loads()出现异常：{0}".format(e))
                 bot_res_json = {'result': 999, 'content': '出错啦，重试一下吧~'}
@@ -142,23 +147,32 @@ class HttpRequest:
                 bot_url.format(msg), 'get')
             # https://blog.csdn.net/qq_41375318/article/details/118578443
             try:
-                json_res = json.loads(bot_res.text.encode('utf-8').decode('utf-8-sig'))
+                json_res = json.loads(bot_res.text.encode(
+                    'utf-8').decode('utf-8-sig'))
             except Exception as e:
                 print("bot2：json.loads()出现异常：{0}".format(e))
                 bot_res_json = {'result': 999, 'content': '出错啦，重试一下吧~'}
                 return bot_res_json
             bot_res_json['result'] = 0
-            bot_res_json['content'] = json_res['title'] + '：\n' + json_res['content']
+            bot_res_json['content'] = json_res['title'] + \
+                '：\n' + json_res['content']
         else:
             if '接龙' in msg:
-                msg = msg.replace('成语接龙', '@cy').replace('接龙', '@cy').replace(' ', '')
+                msg = msg.replace('成语接龙', '@cy').replace('接龙',
+                                                         '@cy').replace(' ', '')
                 bot_res = self.http_request(
                     bot_url.format(msg), 'get')
                 bot_res_json['result'] = 0
                 # https://blog.csdn.net/qq_41375318/article/details/118578443
-                bot_res_json['content'] = bot_res.text.encode('utf-8').decode('utf-8-sig')
+                try:
+                    bot_res_json['content'] = bot_res.text.encode(
+                        'utf-8').decode('utf-8-sig')
+                except Exception as e:
+                    print("bot2：json.loads()出现异常：{0}".format(e))
+                    bot_res_json = {'result': 999, 'content': '出错啦，重试一下吧~'}
+                    return bot_res_json
         return bot_res_json
-    
+
     def bot1_reply(self, bot_url, msg):
         bot_res = self.http_request(
             bot_url.format(msg), 'get')
