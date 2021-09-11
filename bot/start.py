@@ -380,6 +380,10 @@ def add_date_job2(scheduler, message_data):
         delta = timedelta(days=time_delta_dict['year'] * 365 + time_delta_dict['month'] * 30 + time_delta_dict['day'],
                           hours=time_delta_dict['hour'], minutes=time_delta_dict['minute'], seconds=time_delta_dict['second'])
         timeStr = str(now + delta).split('.')[0]
+    if timeStr == '':
+        wechat_manager.send_text(
+            wechat_client_id, message_data['from_wxid'], '没理解你说的时间！换种表达方式？')
+        return
     remind_time = datetime.strptime(timeStr, '%Y-%m-%d %H:%M:%S')
     now = datetime.now()
     print(now)
