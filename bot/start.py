@@ -29,8 +29,8 @@ wechat_manager = WeChatManager(libs_path='../libs')
 # logging.basicConfig(level=logging.ERROR)
 logging.getLogger('apscheduler.executors.default').setLevel(logging.WARNING)
 
-bot_wxid = 'wxid_hzwhlf2n3om121'
-my_wxid = 'zhanggaojiong'
+bot_wxid = 'xxxxx'
+my_wxid = 'xxxxx'
 # bot_wxid = 'zhanggaojiong'
 # my_wxid = 'wxid_hzwhlf2n3om121'
 
@@ -56,13 +56,13 @@ not_exchange_key_text_list = [
 #     '领钥匙': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\zhanggaojiong\\FileStorage\\Image\\2021-07\\fe6867bb9e73e3738f4048898e4a1c1e.dat']
 # }
 commom_send_picture = {
-    '物业': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\1af6ec43a3c0f90578fde9ea4c87589a.dat'],
-    '周口车': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\6daf1a6ec2a1a888b7e7556b5cffa03f.dat'],
-    '水费计算': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\2dfb35a679ba423900ea8c1a40ad2fe2.dat'],
-    '天然气': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c0b27cb695bbc1c9ff4970645556013d.dat'],
-    '领钥匙': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\28feb1c2a98a7d1a935700a5617d6a81.dat'],
-    '打疫苗': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c79453aad013c863f03fe0accedc9b25.dat'],
-    '充电费': ['C:\\Users\\zhanggaojiong\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-08\\c74458a415fee2a0a6c869ddcc94e101.dat']
+    '物业': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\1af6ec43a3c0f90578fde9ea4c87589a.dat'],
+    '周口车': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\6daf1a6ec2a1a888b7e7556b5cffa03f.dat'],
+    '水费计算': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\2dfb35a679ba423900ea8c1a40ad2fe2.dat'],
+    '天然气': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c0b27cb695bbc1c9ff4970645556013d.dat'],
+    '领钥匙': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\28feb1c2a98a7d1a935700a5617d6a81.dat'],
+    '打疫苗': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-07\\c79453aad013c863f03fe0accedc9b25.dat'],
+    '充电费': ['C:\\Users\\xxxx\\Documents\\WeChat Files\\wxid_hzwhlf2n3om121\\FileStorage\\Image\\2021-08\\c74458a415fee2a0a6c869ddcc94e101.dat']
 }
 
 # 格式：[['触发条件1','触发条件2'], ['触发条件1','触发条件2'], ['消息回复类型1','消息回复类型2'], [['回复内容1', '回复内容2'], ['回复内容1', '回复内容2']]]
@@ -71,64 +71,18 @@ reply_msg_type = {
     '收破烂电话': [['破烂', '纸箱', '废品', '费品'], ['电话', '号码', '联系方式'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '18439451096', '18135751786', '13403851362', '15224993425', '13193600443', '15703890422']]],
     '所谓物业': [['物业', '修电梯', '领钥匙', '验房', '充电', '水厂', '售楼部', '电工'], ['电话', '号码', '联系方式', '找谁'], ['text', 'picture'], [['大门口值班室拍的，不知道还有用不'], commom_send_picture['物业']]],
     '充电费': [['充电', '陈'], ['电话', '号码', '联系方式', '找谁'], ['text', 'picture'], [['陈 15938602545'], commom_send_picture['充电费']]],
-    '张宏电话': [['张红', '张宏', '张洪', '张弘', '张的', '张会计'], ['电话', '号码', '联系方式'], ['text'], [['13525778772']]],
-    '马晨电话': [['马晨'], ['电话', '号码', '联系方式'], ['text'], [['18939496262']]],
     '周口车电话': [['周口'], ['电话', '号码', '联系方式', '车'], ['text', 'picture'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15516777066', '13673864370', '18438168828', '13253773308', '17796530101', '18736108761'], commom_send_picture['周口车']]],
     '淮阳车电话': [['淮阳'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '13949997920', '15896799837', '15138363087']]],
     '漯河车电话': [['漯河'], ['电话', '号码', '联系方式', '车'], ['text'], [['\n都是群里以前发的，不保证可用，可以试试，如果不能用了群里说一下\n', '17657586111', '17329261181', '17329277977', '19939481799']]],
-    '周口天气': [['老家', '今天', '周口', '项城', '明天'], ['天气', '下雨', '有雨', '下雪', '有雪', '刮风'], ['text'], [['周口天气']]],
     '水费问题': [['水费'], ['咋算', '阶梯', '计算'], ['text', 'picture'], [['水费是按阶梯的，一个月只有8吨按3.5算的，微信支付宝都可以交'], commom_send_picture['水费计算']]],
     '电费问题': [['电费'], ['咋算', '如何算', '多钱', '多少钱', '去哪'], ['text'], [['500块钱充880度，算下来一度是：0.5681818...。电只能在售楼部交，卡里有应急的10度电']]],
     '天然气问题': [['燃气', '天然气'], ['去哪', '在哪', '电话', '号码', '联系方式', '网上'], ['text', 'picture'], [['\n平安大道(老环城路)与富民路交叉路口往东南约90米', '红旗学校斜对面吧，这几个电话你试试吧，问一下', '(0394)4281234', '绑定卡号，手机上也可以缴费', '第一次需要去营业厅，以后就不用了'], commom_send_picture['天然气']]],
     '领钥匙': [['领钥匙', '拿钥匙'], ['钱', '收', '要', '交'], ['text', 'picture'], [['\n这是一位业主以前领钥匙的收费单，装修保证金现在收2000了'], commom_send_picture['领钥匙']]],
     '抄水表': [['抄水表', '抄表'], ['电话', '号码', '联系方式', '微信'], ['text', 'card'], [['这是抄水表马瑞的微信'], ['wxid_armkfcrcpwvc12']]],
-    '疫苗接种查询': [['疫苗', '仪苗', '接种'], ['查询', '在哪查', '咋查', '链接', '网址', '在哪看'], ['text', 'link'], [['这是河南疫苗接种记录查询链接；也可以在支付宝健康码里看接种记录'], ['https://www.honlivhpit.com/inoc-record']]],
-    '打疫苗': [['疫苗', '仪苗'], ['去哪打', '在哪打', '分哪'], ['text', 'picture'], [['''\n7月10日起，项城市群众接种新冠疫苗将根据身份证居住地址，按辖区开展接种工作，具体分为四个接种点：
-水寨卫生院负责水寨街道、官会镇、高寺镇、李寨镇。
-城郊卫生院负责花园街道、光武街道、南顿镇、范集镇、永丰镇、三店镇、孙店镇。
-秣陵卫生院负责秣陵镇、贾岭镇、付集镇、新桥镇。
-卫校负责莲花街道、东方街道、千佛阁街道、郑郭镇、王明口镇、丁集镇。
- 
- 
-项城市疫情防控指挥部办公室
-2021年7月9日''', '''\n\n通知
-各位支部书记：
-        接市疫情防控指挥部通知，从明天7月18日开始，千佛阁疫苗接种点接种第一针疫苗。
-       接种范围：15—17岁青少年及60岁以上的老年人。
-       接种地点：千佛阁派出所南侧千佛阁卫生服务中心新址。
-       要求各社区支部书记，立即组织社区干部，依据本次接种年龄段，对本社区青少年、老人逐街道、逐小区、逐户通知，做到社区不漏户、户不漏人。'''], commom_send_picture['打疫苗']]]
+    '疫苗接种查询': [['疫苗', '仪苗', '接种'], ['查询', '在哪查', '咋查', '链接', '网址', '在哪看'], ['text', 'link'], [['这是河南疫苗接种记录查询链接；也可以在支付宝健康码里看接种记录']
 }
 # 不需要机器人回复消息的人员列表
-not_reply_list = ['wxid_d0xb5fea91xo21',  # 璐璐
-                  'wxid_52x8hjwxfzgi22',
-                  'wxid_itbbswvx2hq622',
-                  'huhu390776',  # 胡
-                  'dreamfinding',  # 袁
-                  'shijianping440180',  # 施
-                  'tonychi',  # 齐
-                  'wxid_w5mz93wdgacp22',  # 钱进
-                  'wxid_44q6kw082lja22',  # 余军
-                  'wxid_pp82s9d2koxr12',  # 张浩
-                  'wxid_k66q8l9wzw0r',  # 宏扬 宋
-                  'sky6498480',  # 三部 王磊
-                  'MAKIwen0207',  # 人事 许
-                  'wxid_43p384wu6vhi22',  # 王玲
-                  '18078033692@chatroom',  # 海天信息提供
-                  '2341491378@chatroom',  # 一家人
-                  '1310294697@chatroom'  # 家、永远是我们
-                  '18885712152@chatroom',  # 郑州营收
-                  '3595016270@chatroom',  # 研发部
-                  '24239987929@chatroom',  # 3H-中山远传
-                  '20868992414@chatroom',  # 中山公用水务群(肯特流量计)
-                  '25015978703@chatroom',  # 中山公用与常德nb
-                  '20580597839@chatroom',  # 奉贤水表数据沟通群
-                  '5486880221@chatroom',  # 统一使用新通讯协议
-                  '18035020979@chatroom',  # 西海岸水务自研协议开发交流群
-                  '18421931893@chatroom',  # 积成远传设备调试交流
-                  '17882530434@chatroom',  # 易维远传设备交流群
-                  '2654691168@chatroom',  # 三高大家庭
-                  '21602913425@chatroom', # 清美
-                  'wxid_37gktrv5yv5322']
+not_reply_list = ['wxid_xxxx']
 
 iciba_everyday_remind_list = [my_wxid]
 # 各种消息的缓存队列
